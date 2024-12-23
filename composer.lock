@@ -4,8 +4,54 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "30ea4c0e3674f818cc815b4c521fe2a8",
+    "content-hash": "db4de28e9c8b02f00eb0224aadb9c9bc",
     "packages": [
+        {
+            "name": "adev/laraservice",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/adilelkhalloufi/laraservice.git",
+                "reference": "c73657cd6593e78c61477376c690b32ff13f451b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/adilelkhalloufi/laraservice/zipball/c73657cd6593e78c61477376c690b32ff13f451b",
+                "reference": "c73657cd6593e78c61477376c690b32ff13f451b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.3"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Adev\\Laraservice\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "adil elkhalloufi",
+                    "email": "adilelkhalloufi@gmail.com"
+                }
+            ],
+            "description": "Explains how to create a service class and Constants From database to your models",
+            "keywords": [
+                "constants",
+                "laravel",
+                "service"
+            ],
+            "support": {
+                "issues": "https://github.com/adilelkhalloufi/laraservice/issues",
+                "source": "https://github.com/adilelkhalloufi/laraservice/tree/main"
+            },
+            "time": "2024-12-18T14:05:06+00:00"
+        },
         {
             "name": "anourvalar/eloquent-serialize",
             "version": "1.2.27",
@@ -9740,7 +9786,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "adev/laraservice": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
