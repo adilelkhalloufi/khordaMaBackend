@@ -4,9 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Spatie\Translatable\HasTranslations;
 
 class Categorie extends Model
-{    public const TABLE_NAME = 'categories';
+{    
+    use HasTranslations;
+    public $translatable = ['code'];
+    
+    public const TABLE_NAME = 'categories';
 
     public const COL_ID = 'id';
     public const COL_CODE = 'code';
