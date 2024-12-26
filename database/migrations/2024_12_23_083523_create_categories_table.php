@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Family;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,7 +14,15 @@ return new class extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->string('code')->unique();
+            $table->string('name')->nullable();
+            $table->string('slug')->nullable();
+            $table->string('description')->nullable();
+            $table->string('image')->nullable();
+            $table->integer('display')->default(0);
+            $table->integer("parent_id")->index()->nullable();
+            $table->foreignId('family_id')
+            ->nullable()
+            ->constrained(Family::TABLE_NAME);
             $table->timestamps();
         });
     }
