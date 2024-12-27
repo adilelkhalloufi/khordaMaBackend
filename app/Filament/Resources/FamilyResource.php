@@ -2,29 +2,25 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\CategoryResource\Pages;
-use App\Filament\Resources\CategoryResource\RelationManagers;
-use App\Filament\Resources\TranslationsResource\RelationManagers\TranslationsRelationManager;
-use App\Models\Categorie;
+use App\Filament\Resources\FamilyResource\Pages;
+use App\Filament\Resources\FamilyResource\RelationManagers;
 use App\Models\Family;
 use Filament\Forms;
-use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Concerns\Translatable;
 use Filament\Resources\Resource;
 use Filament\Tables;
-use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class CategoryResource extends Resource
+class FamilyResource extends Resource
 {
     use Translatable;
 
-    protected static ?string $model = Categorie::class;
+    protected static ?string $model = Family::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -32,16 +28,7 @@ class CategoryResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make(Categorie::COL_NAME),
-                TextInput::make(Categorie::COL_DESCRIPTION),
-                TextInput::make(Categorie::COL_IMAGE),
-                TextInput::make(Categorie::COL_DISPLAY)->minValue(1)
-                ->maxValue(100),              
-                Select::make(Categorie::COL_FAMILY_ID)  
-                ->label('Family')  
-                ->options(Family::all()->pluck('name', 'id'))  
-                ->searchable(),  
-
+                TextInput::make(Family::COL_NAME)
             ]);
     }
 
@@ -49,10 +36,7 @@ class CategoryResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make(Categorie::COL_NAME),
-                TextColumn::make(Categorie::COL_DESCRIPTION),
-                ImageColumn::make(Categorie::COL_IMAGE),
-                TextColumn::make(Categorie::COL_DISPLAY)->numeric()
+                TextColumn::make(Family::COL_NAME)
             ])
             ->filters([
                 //
@@ -64,6 +48,7 @@ class CategoryResource extends Resource
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                     Tables\Actions\LocaleSwitcher::make(),
+
                 ]),
             ]);
     }
@@ -71,16 +56,16 @@ class CategoryResource extends Resource
     public static function getRelations(): array
     {
         return [
-             
+            //
         ];
     }
 
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListCategories::route('/'),
-            'create' => Pages\CreateCategory::route('/create'),
-            'edit' => Pages\EditCategory::route('/{record}/edit'),
+            'index' => Pages\ListFamilies::route('/'),
+            'create' => Pages\CreateFamily::route('/create'),
+            'edit' => Pages\EditFamily::route('/{record}/edit'),
         ];
     }
 }

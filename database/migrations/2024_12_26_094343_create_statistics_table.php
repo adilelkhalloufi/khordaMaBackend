@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('statistics', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('description')->nullable();
+            $table->longText('title');
+            $table->longText('description')->nullable();
             $table->string('icon')->nullable();
             $table->string('unite')->nullable();
             $table->float('total')->default(0);

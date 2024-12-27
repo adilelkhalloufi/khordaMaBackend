@@ -9,7 +9,33 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
  
 class User extends Authenticatable
-{    public const TABLE_NAME = 'users';
+{
+        /** @use HasFactory<\Database\Factories\UserFactory> */
+        use HasFactory, Notifiable ;
+
+        /**
+         * The attributes that are mass assignable.
+         *
+         * @var list<string>
+         */
+        protected $fillable = [
+            'name',
+            'email',
+            'password',
+        ];
+    
+        /**
+         * The attributes that should be hidden for serialization.
+         *
+         * @var list<string>
+         */
+        protected $hidden = [
+            'password',
+            'remember_token',
+        ];
+    
+
+    public const TABLE_NAME = 'users';
 
     public const COL_ID = 'id';
     public const COL_NAME = 'name';
@@ -19,30 +45,8 @@ class User extends Authenticatable
     public const COL_REMEMBER_TOKEN = 'remember_token';
     public const COL_CREATED_AT = 'created_at';
     public const COL_UPDATED_AT = 'updated_at';
-
-    /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable ;
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var list<string>
-     */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
-
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var list<string>
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+     
+    
 
     /**
      * Get the attributes that should be cast.

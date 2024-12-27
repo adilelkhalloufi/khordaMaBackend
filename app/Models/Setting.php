@@ -6,7 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
 
 class Setting extends Model
-{    public const TABLE_NAME = 'settings';
+{
+
+    use HasTranslations;
+    public $translatable = [];
+    
+    public const TABLE_NAME = 'settings';
 
     public const COL_ID = 'id';
     public const COL_WHATSAPP = 'whatsapp';
@@ -22,7 +27,7 @@ class Setting extends Model
     public const COL_SHOW_PRICES_USERS = 'show_prices_users';
     public const COL_CREATED_AT = 'created_at';
     public const COL_UPDATED_AT = 'updated_at';
+    
 
-    use HasTranslations;
-    public $translatable = [];
+ 
 }

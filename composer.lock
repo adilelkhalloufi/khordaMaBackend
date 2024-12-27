@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/adilelkhalloufi/lrc.git",
-                "reference": "9510599032fd6f57b247453a01b7afe7772693b5"
+                "reference": "17ccdb243c75bd5fb42d94dd3939aba1c219e446"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/adilelkhalloufi/lrc/zipball/9510599032fd6f57b247453a01b7afe7772693b5",
-                "reference": "9510599032fd6f57b247453a01b7afe7772693b5",
+                "url": "https://api.github.com/repos/adilelkhalloufi/lrc/zipball/17ccdb243c75bd5fb42d94dd3939aba1c219e446",
+                "reference": "17ccdb243c75bd5fb42d94dd3939aba1c219e446",
                 "shasum": ""
             },
             "require": {
@@ -31,13 +31,13 @@
             "extra": {
                 "laravel": {
                     "providers": [
-                        "lrc\\Providers\\LRCServiceProvider"
+                        "Lrc\\LRCServiceProvider"
                     ]
                 }
             },
             "autoload": {
                 "psr-4": {
-                    "lrc\\": "lrc/src/"
+                    "Lrc\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -60,7 +60,7 @@
                 "issues": "https://github.com/adilelkhalloufi/lrc/issues",
                 "source": "https://github.com/adilelkhalloufi/lrc/tree/main"
             },
-            "time": "2024-12-26T14:24:19+00:00"
+            "time": "2024-12-26T15:32:52+00:00"
         },
         {
             "name": "anourvalar/eloquent-serialize",

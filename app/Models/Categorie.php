@@ -3,11 +3,16 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\Translatable\HasTranslations;
 
 class Categorie extends Model
-{    public const TABLE_NAME = 'categories';
+{
+    use HasTranslations;
+    public $translatable = [self::COL_NAME,self::COL_SLUG,self::COL_DESCRIPTION];
+
+    public const TABLE_NAME = 'categories';
 
     public const COL_ID = 'id';
     public const COL_NAME = 'name';
@@ -19,13 +24,10 @@ class Categorie extends Model
     public const COL_FAMILY_ID = 'family_id';
     public const COL_CREATED_AT = 'created_at';
     public const COL_UPDATED_AT = 'updated_at';
-    
-    use HasTranslations;
-    public $translatable = [];
-    
+     
  
-
- 
-    
- 
+    public function family() : BelongsTo
+    {
+        return $this->belongsTo(Family::class);
+    }
 }

@@ -6,7 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
 
 class Partner extends Model
-{    public const TABLE_NAME = 'partners';
+{
+
+    use HasTranslations;
+    public $translatable = [self::COL_NAME,self::COL_DESCRIPTION];
+    public const TABLE_NAME = 'partners';
 
     public const COL_ID = 'id';
     public const COL_NAME = 'name';
@@ -15,7 +19,7 @@ class Partner extends Model
     public const COL_URL = 'url';
     public const COL_CREATED_AT = 'created_at';
     public const COL_UPDATED_AT = 'updated_at';
+    
 
-    use HasTranslations;
-    public $translatable = [];
+
 }

@@ -6,7 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
 
 class Statistic extends Model
-{    public const TABLE_NAME = 'statistics';
+{
+
+    use HasTranslations;
+    public $translatable = [
+        self::COL_TITLE,
+        self::COL_DESCRIPTION,
+        self::COL_UNITE
+
+    ];
+
+    public const TABLE_NAME = 'statistics';
 
     public const COL_ID = 'id';
     public const COL_TITLE = 'title';
@@ -17,6 +27,4 @@ class Statistic extends Model
     public const COL_CREATED_AT = 'created_at';
     public const COL_UPDATED_AT = 'updated_at';
 
-    use HasTranslations;
-    public $translatable = [];
 }
