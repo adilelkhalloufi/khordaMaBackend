@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Filament\Resources\AboutResource\Pages;
+namespace App\Filament\Resources\FAQResource\Pages;
 
-use App\Filament\Resources\AboutResource;
+use App\Filament\Resources\FAQResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 
-class EditAbout extends EditRecord
+class EditFAQ extends EditRecord
 {
     use EditRecord\Concerns\Translatable;
 
-    protected static string $resource = AboutResource::class;
+    protected static string $resource = FAQResource::class;
 
     protected function getHeaderActions(): array
     {

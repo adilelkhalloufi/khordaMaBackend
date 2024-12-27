@@ -4,8 +4,7 @@ namespace App\Filament\Resources\CategoryResource\Pages;
 
 use App\Filament\Resources\CategoryResource;
 use Filament\Actions;
-use Filament\Actions\LocaleSwitcher;
- use Filament\Resources\Pages\ListRecords;
+  use Filament\Resources\Pages\ListRecords;
 
 class ListCategories extends ListRecords
 {
@@ -17,7 +16,7 @@ class ListCategories extends ListRecords
     {
         return [
             Actions\CreateAction::make(),
-            LocaleSwitcher::make(),
+            Actions\LocaleSwitcher::make(),
         ];
     }
 }

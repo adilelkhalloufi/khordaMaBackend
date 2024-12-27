@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Filament\Resources\AboutResource\Pages;
+namespace App\Filament\Resources\PartnerResource\Pages;
 
-use App\Filament\Resources\AboutResource;
+use App\Filament\Resources\PartnerResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 
-class ListAbouts extends ListRecords
+class ListPartners extends ListRecords
 {
     use ListRecords\Concerns\Translatable;
 
-    protected static string $resource = AboutResource::class;
+    protected static string $resource = PartnerResource::class;
 
     protected function getHeaderActions(): array
     {

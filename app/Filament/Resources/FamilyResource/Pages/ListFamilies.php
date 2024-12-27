@@ -18,7 +18,7 @@ class ListFamilies extends ListRecords
     {
         return [
             Actions\CreateAction::make(),
-            LocaleSwitcher::make(),
+            Actions\LocaleSwitcher::make(),
 
         ];
     }

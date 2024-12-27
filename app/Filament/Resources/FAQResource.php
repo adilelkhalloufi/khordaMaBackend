@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\AboutResource\Pages;
-use App\Filament\Resources\AboutResource\RelationManagers;
-use App\Models\About;
+use App\Filament\Resources\FAQResource\Pages;
+use App\Filament\Resources\FAQResource\RelationManagers;
+use App\Models\FAQ;
 use Filament\Forms;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -16,11 +16,11 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class AboutResource extends Resource
+class FAQResource extends Resource
 {
     use Translatable;
 
-    protected static ?string $model = About::class;
+    protected static ?string $model = FAQ::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -28,8 +28,11 @@ class AboutResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make(About::COL_TITLE),
-                TextInput::make(About::COL_DESCRIPTION),
+                TextInput::make(FAQ::COL_ANSWER),
+                TextInput::make(FAQ::COL_QUESTION),
+
+
+
             ]);
     }
 
@@ -37,8 +40,8 @@ class AboutResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make(About::COL_TITLE),
-                TextColumn::make(About::COL_DESCRIPTION),
+                TextColumn::make(FAQ::COL_ANSWER),
+                TextColumn::make(FAQ::COL_QUESTION),
             ])
             ->filters([
                 //
@@ -65,9 +68,9 @@ class AboutResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListAbouts::route('/'),
-            'create' => Pages\CreateAbout::route('/create'),
-            'edit' => Pages\EditAbout::route('/{record}/edit'),
+            'index' => Pages\ListFAQS::route('/'),
+            'create' => Pages\CreateFAQ::route('/create'),
+            'edit' => Pages\EditFAQ::route('/{record}/edit'),
         ];
     }
 }

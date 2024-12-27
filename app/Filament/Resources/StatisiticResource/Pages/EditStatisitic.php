@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Filament\Resources\AboutResource\Pages;
+namespace App\Filament\Resources\StatisiticResource\Pages;
 
-use App\Filament\Resources\AboutResource;
+use App\Filament\Resources\StatisiticResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 
-class EditAbout extends EditRecord
+class EditStatisitic extends EditRecord
 {
     use EditRecord\Concerns\Translatable;
 
-    protected static string $resource = AboutResource::class;
+    protected static string $resource = StatisiticResource::class;
 
     protected function getHeaderActions(): array
     {
