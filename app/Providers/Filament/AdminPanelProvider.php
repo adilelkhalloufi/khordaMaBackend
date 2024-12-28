@@ -6,6 +6,7 @@ use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
+use Filament\Navigation\NavigationGroup;
 use Filament\Pages;
 use Filament\Panel;
 use Filament\PanelProvider;
@@ -31,10 +32,17 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
+            ->sidebarCollapsibleOnDesktop()
+            ->navigationGroups([
+                NavigationGroup::make()
+                    ->label('Landing Page')
+                    ->icon('heroicon-o-building-office'),
+
+            ])
             ->plugin(
-                SpatieLaravelTranslatablePlugin::make()->defaultLocales(['en', 'fr','ar'])
-                )
-            
+                SpatieLaravelTranslatablePlugin::make()->defaultLocales(['en', 'fr', 'ar'])
+            )
+            ->font('Poppins')
             ->colors([
                 'primary' => Color::Green,
             ])

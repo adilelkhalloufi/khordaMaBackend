@@ -20,10 +20,11 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class StatisiticResource extends Resource
 {
-    
+
     protected static ?string $model = Statistic::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationGroup = 'Landing Page';
 
     public static function form(Form $form): Form
     {

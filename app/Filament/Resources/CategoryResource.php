@@ -36,11 +36,11 @@ class CategoryResource extends Resource
                 TextInput::make(Categorie::COL_DESCRIPTION),
                 TextInput::make(Categorie::COL_IMAGE),
                 TextInput::make(Categorie::COL_DISPLAY)->minValue(1)
-                ->maxValue(100),              
-                Select::make(Categorie::COL_FAMILY_ID)  
-                ->label('Family')  
-                ->options(Family::all()->pluck('name', 'id'))  
-                ->searchable(),  
+                    ->maxValue(100),
+                Select::make(Categorie::COL_FAMILY_ID)
+                    ->label('Family')
+                    ->options(Family::all()->pluck('name', 'id'))
+                    ->searchable(),
 
             ]);
     }
@@ -70,9 +70,7 @@ class CategoryResource extends Resource
 
     public static function getRelations(): array
     {
-        return [
-             
-        ];
+        return [];
     }
 
     public static function getPages(): array

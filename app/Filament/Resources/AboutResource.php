@@ -22,7 +22,8 @@ class AboutResource extends Resource
 
     protected static ?string $model = About::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-building-office';
+    protected static ?string $navigationGroup = 'Landing Page';
 
     public static function form(Form $form): Form
     {
