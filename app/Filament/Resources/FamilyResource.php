@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Imports\FamilyImporter;
 use App\Filament\Resources\FamilyResource\Pages;
 use App\Filament\Resources\FamilyResource\RelationManagers;
 use App\Models\Family;
@@ -11,6 +12,7 @@ use Filament\Forms\Form;
 use Filament\Resources\Concerns\Translatable;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Actions\ImportAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
@@ -43,6 +45,11 @@ class FamilyResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+
+            ])
+            ->headerActions([
+                ImportAction::make()
+                    ->importer(FamilyImporter::class)
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
