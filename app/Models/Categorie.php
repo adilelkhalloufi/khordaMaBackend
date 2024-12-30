@@ -10,7 +10,8 @@ use Spatie\Translatable\HasTranslations;
 class Categorie extends Model
 {
     use HasTranslations;
-    public $translatable = [self::COL_NAME,self::COL_SLUG,self::COL_DESCRIPTION];
+    public $translatable = [self::COL_NAME, self::COL_SLUG, self::COL_DESCRIPTION];
+    public $fillable = [self::COL_NAME, self::COL_DESCRIPTION];
 
     public const TABLE_NAME = 'categories';
 
@@ -24,9 +25,9 @@ class Categorie extends Model
     public const COL_FAMILY_ID = 'family_id';
     public const COL_CREATED_AT = 'created_at';
     public const COL_UPDATED_AT = 'updated_at';
-     
- 
-    public function family() : BelongsTo
+
+
+    public function family(): BelongsTo
     {
         return $this->belongsTo(Family::class);
     }

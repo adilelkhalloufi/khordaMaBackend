@@ -2,11 +2,13 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Imports\CategoryImporter;
 use App\Filament\Resources\CategoryResource\Pages;
 use App\Filament\Resources\CategoryResource\RelationManagers;
 use App\Filament\Resources\TranslationsResource\RelationManagers\TranslationsRelationManager;
 use App\Models\Categorie;
 use App\Models\Family;
+use Filament\Actions\ImportAction;
 use Filament\Forms;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -49,16 +51,24 @@ class CategoryResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make(Categorie::COL_NAME),
-                TextColumn::make(Categorie::COL_DESCRIPTION),
+                TextColumn::make(Categorie::COL_NAME)->searchable(),
+                TextColumn::make(Categorie::COL_DESCRIPTION)->searchable(),
                 ImageColumn::make(Categorie::COL_IMAGE),
-                TextColumn::make(Categorie::COL_DISPLAY)->numeric()
+                TextColumn::make(Categorie::COL_DISPLAY)->numeric(),
+                TextColumn::make("family.name")
+                    ->label('Family')
+                    ->sortable()
+                    ->searchable(),
             ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+            ])
+            ->headerActions([
+                Tables\Actions\ImportAction::make()
+                    ->importer(CategoryImporter::class)
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

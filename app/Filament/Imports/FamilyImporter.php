@@ -6,6 +6,8 @@ use App\Models\Family;
 use Filament\Actions\Imports\ImportColumn;
 use Filament\Actions\Imports\Importer;
 use Filament\Actions\Imports\Models\Import;
+use Illuminate\Support\Facades\Log;
+
 
 class FamilyImporter extends Importer
 {
@@ -22,12 +24,15 @@ class FamilyImporter extends Importer
 
     public function resolveRecord(): ?Family
     {
-        return Family::firstOrNew([
-            // Update existing records, matching them by `$this->data['column_name']`
-            Family::COL_NAME => $this->data[Family::COL_NAME],
-        ]);
+        try {
 
-        return new Family();
+            return Family::create([
+                Family::COL_NAME => $this->data[Family::COL_NAME],
+            ]);
+        } catch (\Exception $e) {
+            Log::error('Failed to import Family: ' . $this->data[Family::COL_NAME] . ' Error: ' . $e->getMessage());
+            return null;
+        }
     }
 
     public static function getCompletedNotificationBody(Import $import): string
