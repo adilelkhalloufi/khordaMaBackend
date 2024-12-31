@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Imports\UniteImporter;
 use App\Filament\Resources\UniteResource\Pages;
 use App\Filament\Resources\UniteResource\RelationManagers;
 use App\Models\Unite;
@@ -45,6 +46,10 @@ class UniteResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+            ])
+            ->headerActions([
+                Tables\Actions\ImportAction::make()
+                    ->importer(UniteImporter::class)
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

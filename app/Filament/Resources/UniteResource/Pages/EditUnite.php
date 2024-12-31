@@ -8,12 +8,16 @@ use Filament\Resources\Pages\EditRecord;
 
 class EditUnite extends EditRecord
 {
+    use EditRecord\Concerns\Translatable;
+
     protected static string $resource = UniteResource::class;
 
     protected function getHeaderActions(): array
     {
         return [
             Actions\DeleteAction::make(),
+            Actions\LocaleSwitcher::make(),
+
         ];
     }
 }

@@ -8,12 +8,16 @@ use Filament\Resources\Pages\ListRecords;
 
 class ListUnites extends ListRecords
 {
+    use ListRecords\Concerns\Translatable;
+
     protected static string $resource = UniteResource::class;
 
     protected function getHeaderActions(): array
     {
         return [
             Actions\CreateAction::make(),
+            Actions\LocaleSwitcher::make(),
+
         ];
     }
 }

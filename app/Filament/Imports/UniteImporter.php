@@ -6,6 +6,7 @@ use App\Models\Unite;
 use Filament\Actions\Imports\ImportColumn;
 use Filament\Actions\Imports\Importer;
 use Filament\Actions\Imports\Models\Import;
+use Illuminate\Support\Facades\Log;
 
 class UniteImporter extends Importer
 {
@@ -14,18 +15,23 @@ class UniteImporter extends Importer
     public static function getColumns(): array
     {
         return [
-            //
+            ImportColumn::make(Unite::COL_NAME)
+                ->requiredMapping()
+                ->rules(['required']),
         ];
     }
 
     public function resolveRecord(): ?Unite
     {
-        // return Unite::firstOrNew([
-        //     // Update existing records, matching them by `$this->data['column_name']`
-        //     'email' => $this->data['email'],
-        // ]);
+        try {
 
-        return new Unite();
+            return Unite::create([
+                Unite::COL_NAME => $this->data[Unite::COL_NAME],
+            ]);
+        } catch (\Exception $e) {
+            Log::error('Failed to import Family: ' . $this->data[Unite::COL_NAME] . ' Error: ' . $e->getMessage());
+            return null;
+        }
     }
 
     public static function getCompletedNotificationBody(Import $import): string
