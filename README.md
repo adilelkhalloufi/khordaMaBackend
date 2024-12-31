@@ -124,3 +124,4 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 -   [ ] User Experience and Feedback
 -   [ ] Analytics and Insights
 -   [ ] Integration with other services
+        https://chatgpt.com/c/67742959-6e1c-8013-802c-e6b66a2da6e2
