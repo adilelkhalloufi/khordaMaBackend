@@ -37,6 +37,9 @@ class AdminPanelProvider extends PanelProvider
                 NavigationGroup::make()
                     ->label('Landing Page')
                     ->icon('heroicon-o-building-office'),
+                NavigationGroup::make()
+                    ->label('Settings')
+                    ->icon('heroicon-s-square-3-stack-3d')
 
             ])
             ->plugin(
