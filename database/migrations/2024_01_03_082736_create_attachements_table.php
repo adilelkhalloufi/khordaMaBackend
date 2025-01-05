@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('path')->nullable();
             $table->string('type')->nullable();
             $table->nullableMorphs('model');
-            $table->integer('model_id')->nullable();
             $table->foreignId('user_id')
                 ->nullable()
                 ->constrained(User::TABLE_NAME);
