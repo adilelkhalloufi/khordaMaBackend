@@ -68,10 +68,10 @@ class CategoryResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make(),
             ])
-            ->headerActions([
-                Tables\Actions\ImportAction::make()
-                    ->importer(CategoryImporter::class)
-            ])
+            // ->headerActions([
+            //     Tables\Actions\ImportAction::make()
+            //         ->importer(CategoryImporter::class)
+            // ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),

@@ -16,8 +16,9 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('description');
-            $table->decimal('price', 10, 2);
+            $table->string('description')->nullable();
+            $table->decimal('price', 10, 2)->default(0);
+            $table->intdiv('quantity')->default(1);
             $table->foreignId('categorie_id')
                 ->nullable()
                 ->constrained(Categorie::TABLE_NAME);
@@ -25,8 +26,6 @@ return new class extends Migration
                 ->nullable()
                 ->constrained(Unite::TABLE_NAME);
             $table->integer('statue')->default(1);
-            $table->string('conditions_document')->default(1);
-
             $table->timestamps();
         });
     }
