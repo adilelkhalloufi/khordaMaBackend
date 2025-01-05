@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('name');
             $table->string('description');
             $table->decimal('price', 10, 2);
-            $table->string('image');
             $table->foreignId('categorie_id')
                 ->nullable()
                 ->constrained(Categorie::TABLE_NAME);
@@ -27,6 +26,7 @@ return new class extends Migration
                 ->constrained(Unite::TABLE_NAME);
             $table->integer('statue')->default(1);
             $table->string('conditions_document')->default(1);
+
             $table->timestamps();
         });
     }
