@@ -14,14 +14,15 @@ return new class extends Migration
     {
         Schema::create('attachements', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')
-            ->nullable()
-            ->constrained(User::COL_ID);
+
             $table->string('name')->nullable();
             $table->string('path')->nullable();
             $table->string('type')->nullable();
             $table->string('model')->nullable();
             $table->integer('model_id')->nullable();
+            $table->foreignId('user_id')
+                ->nullable()
+                ->constrained(User::TABLE_NAME);
             $table->timestamps();
         });
     }

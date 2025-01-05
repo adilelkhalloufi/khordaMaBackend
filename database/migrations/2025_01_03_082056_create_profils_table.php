@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('status')->default(2);
             $table->integer('coins')->default(0);
             $table->foreignId('user_id')
-            ->nullable()
-            ->constrained(User::COL_ID);
+                ->nullable()
+                ->constrained(User::TABLE_NAME);
             $table->string("company_name")->nullable();
             $table->string("company_address")->nullable();
             $table->string("company_logo")->nullable();

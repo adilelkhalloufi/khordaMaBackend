@@ -20,11 +20,11 @@ return new class extends Migration
             $table->decimal('price', 10, 2);
             $table->string('image');
             $table->foreignId('categorie_id')
-            ->nullable()
-            ->constrained(Categorie::COL_ID);
+                ->nullable()
+                ->constrained(Categorie::TABLE_NAME);
             $table->foreignId('unite_id')
-            ->nullable()
-            ->constrained(Unite::COL_ID);
+                ->nullable()
+                ->constrained(Unite::TABLE_NAME);
             $table->integer('statue')->default(1);
             $table->string('conditions_document')->default(1);
             $table->timestamps();
