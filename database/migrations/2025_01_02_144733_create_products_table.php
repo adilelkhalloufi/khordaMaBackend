@@ -21,10 +21,10 @@ return new class extends Migration
             $table->intdiv('quantity')->default(1);
             $table->foreignId('categorie_id')
                 ->nullable()
-                ->constrained(Categorie::TABLE_NAME);
+                ->constrained('categories');
             $table->foreignId('unite_id')
                 ->nullable()
-                ->constrained(Unite::TABLE_NAME);
+                ->constrained('unites');
             $table->integer('statue')->default(1);
             $table->timestamps();
         });

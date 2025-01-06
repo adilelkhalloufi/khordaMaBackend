@@ -22,7 +22,7 @@ return new class extends Migration
             $table->integer("parent_id")->index()->nullable();
             $table->foreignId('family_id')
             ->nullable()
-            ->constrained(Family::TABLE_NAME);
+            ->constrained('families');
             $table->timestamps();
         });
     }
