@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "db83e172b2decb4315a1d61f94f0f6c0",
+    "content-hash": "8aba90be7b5823ad4db1279f4bb73d82",
     "packages": [
         {
             "name": "adev/lrc",
-            "version": "dev-main",
+            "version": "v2.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/adilelkhalloufi/lrc.git",
-                "reference": "17ccdb243c75bd5fb42d94dd3939aba1c219e446"
+                "reference": "a31bc55342c4938540bb26c4c4f1079caa24415a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/adilelkhalloufi/lrc/zipball/17ccdb243c75bd5fb42d94dd3939aba1c219e446",
-                "reference": "17ccdb243c75bd5fb42d94dd3939aba1c219e446",
+                "url": "https://api.github.com/repos/adilelkhalloufi/lrc/zipball/a31bc55342c4938540bb26c4c4f1079caa24415a",
+                "reference": "a31bc55342c4938540bb26c4c4f1079caa24415a",
                 "shasum": ""
             },
             "require": {
@@ -26,7 +26,6 @@
             "require-dev": {
                 "phpunit/phpunit": "^9.5"
             },
-            "default-branch": true,
             "type": "library",
             "extra": {
                 "laravel": {
@@ -58,9 +57,9 @@
             ],
             "support": {
                 "issues": "https://github.com/adilelkhalloufi/lrc/issues",
-                "source": "https://github.com/adilelkhalloufi/lrc/tree/main"
+                "source": "https://github.com/adilelkhalloufi/lrc/tree/v2.0.3"
             },
-            "time": "2024-12-26T15:32:52+00:00"
+            "time": "2025-01-06T14:00:58+00:00"
         },
         {
             "name": "anourvalar/eloquent-serialize",
@@ -10259,9 +10258,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "adev/lrc": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
