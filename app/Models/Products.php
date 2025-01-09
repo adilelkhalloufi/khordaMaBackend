@@ -22,13 +22,7 @@ class Products extends Model
     public const COL_CREATED_AT = 'created_at';
     public const COL_UPDATED_AT = 'updated_at';
 
-    public function images(): BelongsTo
-    {
-        return $this->belongsTo(Attachement::class);
-    }
-
-
-
+ 
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
