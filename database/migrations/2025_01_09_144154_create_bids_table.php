@@ -13,6 +13,15 @@ return new class extends Migration
     {
         Schema::create('bids', function (Blueprint $table) {
             $table->id();
+            $table->decimal('price')->default(0);
+        
+            $table->foreignId('product_id')
+            ->nullable()
+            ->constrained('products');
+            $table->foreignId('user_id')
+            ->nullable()
+            ->constrained('users');
+           
             $table->timestamps();
         });
     }
