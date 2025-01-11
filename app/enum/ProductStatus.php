@@ -12,7 +12,7 @@ enum ProductStatus: int
 
     public function label(): string
     {
-        return match($this) {
+        return match ($this) {
             self::Pending => 'Pending',
             self::InProgress => 'In Progress',
             self::Done => 'Done',
@@ -20,4 +20,3 @@ enum ProductStatus: int
         };
     }
 }
-
