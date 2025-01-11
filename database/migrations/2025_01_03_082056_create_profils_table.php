@@ -20,7 +20,7 @@ return new class extends Migration
             $table->integer('coins')->default(0);
             $table->foreignId('user_id')
                 ->nullable()
-                ->constrained(User::TABLE_NAME);
+                ->constrained('users');
             $table->string("company_name")->nullable();
             $table->string("company_address")->nullable();
             $table->string("company_logo")->nullable();

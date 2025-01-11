@@ -21,8 +21,8 @@ return new class extends Migration
             $table->integer('display')->default(0);
             $table->integer("parent_id")->index()->nullable();
             $table->foreignId('family_id')
-            ->nullable()
-            ->constrained(Family::TABLE_NAME);
+                ->nullable()
+                ->constrained('families');
             $table->timestamps();
         });
     }

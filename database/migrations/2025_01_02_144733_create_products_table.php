@@ -18,13 +18,16 @@ return new class extends Migration
             $table->string('name');
             $table->string('description')->nullable();
             $table->decimal('price', 10, 2)->default(0);
-            $table->intdiv('quantity')->default(1);
+            $table->integer('quantity')->default(1);
+
             $table->foreignId('categorie_id')
                 ->nullable()
-                ->constrained(Categorie::TABLE_NAME);
+                ->constrained('categories');
+
             $table->foreignId('unite_id')
                 ->nullable()
-                ->constrained(Unite::TABLE_NAME);
+                ->constrained('unites');
+
             $table->integer('statue')->default(1);
             $table->timestamps();
         });
