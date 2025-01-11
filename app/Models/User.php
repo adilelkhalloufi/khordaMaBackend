@@ -9,7 +9,20 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
-{
+{ 
+
+   public const TABLE_NAME = 'users';
+
+    public const COL_ID = 'id';
+    public const COL_NAME = 'name';
+    public const COL_EMAIL = 'email';
+    public const COL_EMAIL_VERIFIED_AT = 'email_verified_at';
+    public const COL_PASSWORD = 'password';
+    public const COL_ROLE = 'role';
+    public const COL_REMEMBER_TOKEN = 'remember_token';
+    public const COL_CREATED_AT = 'created_at';
+    public const COL_UPDATED_AT = 'updated_at';
+
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 

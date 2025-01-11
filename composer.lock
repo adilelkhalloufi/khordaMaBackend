@@ -8,6 +8,7 @@
     "packages": [
         {
             "name": "adev/lrc",
+<<<<<<< HEAD
             "version": "v2.0.2",
             "source": {
                 "type": "git",
@@ -18,6 +19,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/adilelkhalloufi/lrc/zipball/06a711bd3a25a0f99fbec629abb908d820390db0",
                 "reference": "06a711bd3a25a0f99fbec629abb908d820390db0",
+=======
+            "version": "v2.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/adilelkhalloufi/lrc.git",
+                "reference": "a31bc55342c4938540bb26c4c4f1079caa24415a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/adilelkhalloufi/lrc/zipball/a31bc55342c4938540bb26c4c4f1079caa24415a",
+                "reference": "a31bc55342c4938540bb26c4c4f1079caa24415a",
+>>>>>>> a4119b2b8480cb326f2911325e54894c744c6d4a
                 "shasum": ""
             },
             "require": {
@@ -57,9 +70,15 @@
             ],
             "support": {
                 "issues": "https://github.com/adilelkhalloufi/lrc/issues",
+<<<<<<< HEAD
                 "source": "https://github.com/adilelkhalloufi/lrc/tree/v2.0.2"
             },
             "time": "2025-01-05T17:41:15+00:00"
+=======
+                "source": "https://github.com/adilelkhalloufi/lrc/tree/v2.0.3"
+            },
+            "time": "2025-01-06T14:00:58+00:00"
+>>>>>>> a4119b2b8480cb326f2911325e54894c744c6d4a
         },
         {
             "name": "anourvalar/eloquent-serialize",

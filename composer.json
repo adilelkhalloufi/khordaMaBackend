@@ -63,8 +63,8 @@
         ],
         "config-start": [
             "php artisan db:wipe",
-            "php artisan migrate:refresh",
             "php artisan make:constants all --delete",
+            "php artisan migrate:refresh",
             "php artisan make:constants all",
             "php artisan db:seed"
         ]

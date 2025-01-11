@@ -19,9 +19,5 @@ class About extends Model
 
 
     use HasTranslations;
-    // public $translatable = [self::COL_TITLE,self::COL_DESCRIPTION];
-
-
-
-
+  // public $translatable = [self::COL_TITLE, self::COL_DESCRIPTION]; 
 }
