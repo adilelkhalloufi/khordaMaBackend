@@ -3,6 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\enum\ProductStatus;
+use App\Filament\Resources\AttachementResource\RelationManagers\ModelRelationManager;
 use App\Filament\Resources\ProductResource\Pages;
 use App\Filament\Resources\ProductResource\RelationManagers;
 use App\Models\Product;
@@ -10,6 +11,9 @@ use App\Models\Unite;
 use App\Models\Categorie;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Group;
+use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -31,30 +35,54 @@ class ProductResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make(Product::COL_NAME),
-                Tiny::make(Product::COL_DESCRIPTION)->type("text"),
-                TextInput::make(Product::COL_QUANTITY)->numeric(),
-                TextInput::make(Product::COL_PRICE)->numeric(),
-                Select::make(Product::COL_CATEGORIE_ID)
-                    ->label('Categorie')
-                    ->options(Categorie::all()->pluck('name', 'id'))
-                    ->searchable(),
-                Select::make(Product::COL_UNITE_ID)
-                    ->label('Unite')
-                    ->options(Unite::all()->pluck('name', 'id'))
-                    ->searchable(),
-                Select::make(Product::COL_STATUE)
-                    ->label('Statue')
-                    ->options(collect(ProductStatus::cases())->mapWithKeys(function ($status) {
-                        return [$status->value => $status->label()]; // Use a label() method for better readability
-                    }))->default(ProductStatus::Pending)
-                    ->searchable(),
-                FileUpload::make('attachments')
-                    ->label('Attachments')
-                    ->multiple()
-                    ->directory('product-attachments')
-                    ->maxSize(10240)
-                    ->acceptedFileTypes(['image/*', 'application/pdf']),
+                Section::make('Create Product')
+                    ->description("Create product over here")
+                    ->schema([
+                        TextInput::make(Product::COL_NAME)
+                            ->required()
+                            ->label('Product Name'),
+                        RichEditor::make(Product::COL_DESCRIPTION)
+                            ->label('Description'),
+                    ])
+                    ->columnSpan(1)
+                    ->columns(1),
+                Group::make()->schema([
+
+                    TextInput::make(Product::COL_QUANTITY)
+                        ->required()
+                        ->label('Quantity')
+                        ->numeric(),
+                    TextInput::make(Product::COL_PRICE)
+                        ->label('Price')
+                        ->required()
+                        ->numeric(),
+                ]),
+                Section::make()->schema([
+                    Select::make(Product::COL_CATEGORIE_ID)
+                        ->label('Categorie')
+                        ->relationship('Categorie', 'name')
+                        ->required()
+                        ->searchable(),
+
+                    Select::make(Product::COL_UNITE_ID)
+                        ->label('Unite')
+                        ->relationship('Unite', 'name')
+
+                        ->required()
+                        ->searchable(),
+                    Select::make(Product::COL_STATUE)
+                        ->options(ProductStatus::class)
+                        ->required()
+                        ->default(ProductStatus::Pending),
+                ]),
+                // Group::make()->schema([
+                //     FileUpload::make('attachments')
+                //         ->label('Attachements')
+                //         ->multiple()
+                //         ->directory('products')
+                //         ->required(false),
+                // ])
+
 
             ]);
     }
@@ -79,13 +107,12 @@ class ProductResource extends Resource
 
                 TextColumn::make(Product::COL_PRICE)
                     ->label('Price')
-                    ->money()
+                    ->money("DH")
                     ->sortable(),
 
                 TextColumn::make(Product::COL_STATUE)
-                    ->label('Status')
-                    ->formatStateUsing(fn(ProductStatus $status) => $status->label())
-                    ->sortable()
+                    ->label('Status')->badge()
+
 
             ])
             ->filters([])
@@ -101,9 +128,7 @@ class ProductResource extends Resource
 
     public static function getRelations(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public static function getPages(): array

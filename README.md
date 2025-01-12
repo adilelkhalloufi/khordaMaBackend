@@ -96,7 +96,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## Progress
 
 -   [x] User Authentication
--   [ ] Scrap Material Listing
+-   [x] Scrap Material Listing
 -   [ ] Buyer Inquiry Management
 -   [ ] Order Management
 -   [ ] Payment Gateway Integration
@@ -124,4 +124,20 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 -   [ ] User Experience and Feedback
 -   [ ] Analytics and Insights
 -   [ ] Integration with other services
-        https://chatgpt.com/c/67742959-6e1c-8013-802c-e6b66a2da6e2
+ 
+
+# Task
+-   list product with for user (add user and it for bid or not)
+-   command list 
+-   list bids for products
+-   create api for search and list products for front end 
+-> create front end to user to creata account
+    -  very account 
+    - prodcuts he listed 
+    - favorites
+- end or not
+ -
+
+
+
+

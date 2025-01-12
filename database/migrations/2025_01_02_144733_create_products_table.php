@@ -28,7 +28,22 @@ return new class extends Migration
                 ->nullable()
                 ->constrained('unites');
 
+            $table->foreignId('user_id')
+                ->nullable()
+                ->constrained('users');
+
             $table->integer('statue')->default(1);
+
+            $table->boolean("auction")->default(false);
+            $table->date("date_end_auction")->nullable();
+
+            $table->boolean("conditions_document")->default(false);
+            $table->boolean("conditions_document_price")->default(10);
+
+            $table->boolean("show_company")->default(false);
+
+            $table->integer('statue')->default(1);
+
             $table->timestamps();
         });
     }

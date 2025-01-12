@@ -6,9 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class Attachement extends Model
-{ 
+{
 
-   public const TABLE_NAME = 'attachements';
+    protected $guarded = [];
+    public const TABLE_NAME = 'attachements';
 
     public const COL_ID = 'id';
     public const COL_NAME = 'name';

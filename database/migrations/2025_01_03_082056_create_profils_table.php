@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string("company_address")->nullable();
             $table->string("company_logo")->nullable();
             $table->string("url")->nullable();
+            $table->string("website")->nullable();
             $table->integer("rate")->default(0)->max(5);
             $table->timestamps();
         });
