@@ -71,7 +71,7 @@ class CategorieController extends Controller
         //
     }
 
-
+    // 
     public function GetCategories(GetCategorieRequest $request): JsonResponse
     {
         $familyId = $request->input('type', CategoryTypes::Scrap);
@@ -80,17 +80,9 @@ class CategorieController extends Controller
             ->get();
 
         if ($categories->isEmpty()) {
-            return response()->json([
-                'success' => false,
-                'message' => 'No categories found for the specified family ID.',
-                'data' => [],
-            ], 404);
+            return response()->json([], 404);
         }
 
-        return response()->json([
-            'success' => true,
-            'message' => 'Categories retrieved successfully.',
-            'data' => $categories,
-        ]);
+        return response()->json($categories);
     }
 }

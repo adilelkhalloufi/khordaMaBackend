@@ -14,5 +14,5 @@ Route::get('/user', function (Request $request) {
 // I want to make public route for show list product and categories and unites 
 
 Route::get('products', [ProductsController::class, "GetPublicProducts"]);
-Route::get('categories', [CategorieController::class, "GetCategories"]);
+Route::get('categorie', [CategorieController::class, "GetCategories"]);
 Route::get('unites', [UniteController::class, "GetUnites"]);

@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
 
 class Unite extends Model
-{ 
+{
 
-   public const TABLE_NAME = 'unites';
+    public const TABLE_NAME = 'unites';
 
     public const COL_ID = 'id';
     public const COL_NAME = 'name';
@@ -17,5 +17,5 @@ class Unite extends Model
 
     use HasTranslations;
 
-    // public $translatable = [self::COL_NAME]; 
+    public $translatable = [self::COL_NAME];
 }

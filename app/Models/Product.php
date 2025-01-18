@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Product extends Model
-{ 
+{
 
-   public const TABLE_NAME = 'products';
+    public const TABLE_NAME = 'products';
 
     public const COL_ID = 'id';
     public const COL_NAME = 'name';
@@ -30,7 +30,7 @@ class Product extends Model
     public const COL_CREATED_AT = 'created_at';
     public const COL_UPDATED_AT = 'updated_at';
 
-    protected $guarded = [];
+
 
 
 

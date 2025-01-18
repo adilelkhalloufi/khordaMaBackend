@@ -2,8 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\enum\ProductStatus;
+use App\Models\Product;
 use App\Models\Products;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Response;
+use Symfony\Component\HttpFoundation\Response as HttpFoundationResponse;
 
 class ProductsController extends Controller
 {
@@ -61,5 +67,14 @@ class ProductsController extends Controller
     public function destroy(Products $products)
     {
         //
+    }
+
+
+    public function GetPublicProducts(): JsonResponse
+    {
+
+        $products = Product::where(Product::COL_STATUE, ProductStatus::Published)->get();
+
+        return response()->json($products);
     }
 }

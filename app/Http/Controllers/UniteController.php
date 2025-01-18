@@ -68,6 +68,14 @@ class UniteController extends Controller
     {
         $unite = Unite::all();
 
+        if ($unite->isEmpty()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'No unties found for the specified family ID.',
+                'data' => [],
+            ], 404);
+        }
+
         return response()->json($unite);
     }
 }
