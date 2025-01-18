@@ -16,6 +16,6 @@ class Unite extends Model
     public const COL_UPDATED_AT = 'updated_at';
 
     use HasTranslations;
- 
-    public $translatable = [self::COL_NAME]; 
+
+    // public $translatable = [self::COL_NAME]; 
 }

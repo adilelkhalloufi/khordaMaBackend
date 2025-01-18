@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\CategorieController;
+use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\UniteController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -8,18 +11,8 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 
-// give me route with example parames for api
-Route::get('example/{name}/{age}/{city}', function (
-    $name,
-    $age,
-    $city
-) {
-    return response()->json([
-        'message' => 'Hello, World!',
-        'params' => [
-            'name' => $name . " mongo",
-            'age' => $age,
-            'city' => $city
-        ]
-    ]);
-});
+// I want to make public route for show list product and categories and unites 
+
+Route::get('products', [ProductsController::class, "GetPublicProducts"]);
+Route::get('categories', [CategorieController::class, "GetCategories"]);
+Route::get('unites', [UniteController::class, "GetUnites"]);

@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\enum\CategoryTypes;
+use App\Http\Requests\GetCategorieRequest;
 use App\Models\Categorie;
 use App\Models\User;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class CategorieController extends Controller
@@ -13,11 +16,11 @@ class CategorieController extends Controller
      */
     public function index()
     {
-         
+
         // return response()->json([
         //     'user' => User::all(),
         // ]);
-        
+
     }
 
     /**
@@ -66,5 +69,28 @@ class CategorieController extends Controller
     public function destroy(Categorie $categorie)
     {
         //
+    }
+
+
+    public function GetCategories(GetCategorieRequest $request): JsonResponse
+    {
+        $familyId = $request->input('type', CategoryTypes::Scrap);
+
+        $categories = Categorie::where(Categorie::COL_FAMILY_ID, $familyId)
+            ->get();
+
+        if ($categories->isEmpty()) {
+            return response()->json([
+                'success' => false,
+                'message' => 'No categories found for the specified family ID.',
+                'data' => [],
+            ], 404);
+        }
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Categories retrieved successfully.',
+            'data' => $categories,
+        ]);
     }
 }

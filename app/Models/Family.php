@@ -17,6 +17,6 @@ class Family extends Model
 
 
     use HasTranslations;
-    public $translatable = [self::COL_NAME];
+    // public $translatable = [self::COL_NAME];
 
 }

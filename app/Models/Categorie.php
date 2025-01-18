@@ -24,7 +24,7 @@ class Categorie extends Model
     public const COL_UPDATED_AT = 'updated_at';
 
   use HasTranslations;
-  public $translatable = [self::COL_NAME, self::COL_SLUG, self::COL_DESCRIPTION];
+  // public $translatable = [self::COL_NAME, self::COL_SLUG, self::COL_DESCRIPTION];
 
   public function family(): BelongsTo
   {
