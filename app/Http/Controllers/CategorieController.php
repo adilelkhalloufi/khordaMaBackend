@@ -18,14 +18,16 @@ class CategorieController extends Controller
     {
         $familyId = $request->input('type', CategoryTypes::Scrap);
 
-        $categories = Categorie::where(Categorie::COL_FAMILY_ID, $familyId)
+        $categories = Categorie::with('sub_categories')
+            ->where(Categorie::COL_FAMILY_ID, $familyId)
+            ->whereNull(Categorie::COL_PARENT_ID)
             ->get();
 
         if ($categories->isEmpty()) {
             return response()->json([], 404);
         }
-
         return response()->json(CategoriesResource::collection($categories));
+        // return response()->json($categories);
     }
 
     /**

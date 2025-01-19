@@ -42,6 +42,6 @@ class Categorie extends Model
 
     public function sub_categories()
     {
-        return $this->hasMany(Categorie::class, 'parent_id');
+        return $this->hasMany(Categorie::class, 'parent_id', 'id');
     }
 }

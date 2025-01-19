@@ -14,18 +14,11 @@ class CategoriesResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-
+        $name = json_decode($this->getRawOriginal('name'), true);
         return [
             'id' => $this->id,
-            'name' => $this->name,
-            'slug' => $this->slug,
-            'description' => $this->description,
-            'image' => $this->image,
-            'display' => $this->display,
-            'parent_id' => $this->parent_id,
-            'family_id' => $this->family_id,
-            'family' => new FamiliesResource($this->family),
-            'sub_categories' => CategoriesResource::collection($this->sub_categories),
+            'name' => $name,
+            'subcategories' => CategoriesResource::collection($this->sub_categories),
         ];
     }
 }
