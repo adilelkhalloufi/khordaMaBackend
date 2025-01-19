@@ -13,16 +13,21 @@ class CategorieController extends Controller
 {
     /**
      * Display a listing of the resource.
+     * @return JsonResponse
      */
-    public function index()
+    public function index(GetCategorieRequest $request): JsonResponse
     {
+        $familyId = $request->input('type', CategoryTypes::Scrap);
 
-        // return response()->json([
-        //     'user' => User::all(),
-        // ]);
+        $categories = Categorie::where(Categorie::COL_FAMILY_ID, $familyId)
+            ->get();
 
+        if ($categories->isEmpty()) {
+            return response()->json([], 404);
+        }
+
+        return response()->json($categories);
     }
-
     /**
      * Show the form for creating a new resource.
      */
@@ -72,17 +77,5 @@ class CategorieController extends Controller
     }
 
     // 
-    public function GetCategories(GetCategorieRequest $request): JsonResponse
-    {
-        $familyId = $request->input('type', CategoryTypes::Scrap);
 
-        $categories = Categorie::where(Categorie::COL_FAMILY_ID, $familyId)
-            ->get();
-
-        if ($categories->isEmpty()) {
-            return response()->json([], 404);
-        }
-
-        return response()->json($categories);
-    }
 }

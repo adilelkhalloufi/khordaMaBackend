@@ -2,17 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CategoryTranslations;
+use App\enum\ProductAdminStatus;
+use App\Http\Resources\ProductRessource;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
-class CategoryTranslationsController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $Product = Product::with(['categorie', 'unite'])
+            ->where(Product::COL_STATUE, ProductAdminStatus::Published->value)
+            ->get();
+
+        return response()->json(ProductRessource::collection($Product));
     }
 
     /**
@@ -34,7 +40,7 @@ class CategoryTranslationsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(CategoryTranslations $categoryTranslations)
+    public function show(string $id)
     {
         //
     }
@@ -42,7 +48,7 @@ class CategoryTranslationsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(CategoryTranslations $categoryTranslations)
+    public function edit(string $id)
     {
         //
     }
@@ -50,7 +56,7 @@ class CategoryTranslationsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, CategoryTranslations $categoryTranslations)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -58,7 +64,7 @@ class CategoryTranslationsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(CategoryTranslations $categoryTranslations)
+    public function destroy(string $id)
     {
         //
     }

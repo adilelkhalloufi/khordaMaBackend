@@ -3,16 +3,24 @@
 namespace App\Http\Controllers;
 
 use App\Models\Unite;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class UniteController extends Controller
 {
     /**
      * Display a listing of the resource.
+     * @return JsonResponse
      */
-    public function index()
+    public function index(): JsonResponse
     {
-        //
+        $unite = Unite::all();
+
+        if ($unite->isEmpty()) {
+            return response()->json([], 404);
+        }
+
+        return response()->json($unite);
     }
 
     /**
@@ -61,21 +69,5 @@ class UniteController extends Controller
     public function destroy(string $id)
     {
         //
-    }
-
-
-    public function GetUnites()
-    {
-        $unite = Unite::all();
-
-        if ($unite->isEmpty()) {
-            return response()->json([
-                'success' => false,
-                'message' => 'No unties found for the specified family ID.',
-                'data' => [],
-            ], 404);
-        }
-
-        return response()->json($unite);
     }
 }

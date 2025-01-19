@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategorieController;
-use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UniteController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -11,8 +11,8 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 
-// I want to make public route for show list product and categories and unites 
 
-Route::get('products', [ProductsController::class, "GetPublicProducts"]);
-Route::get('categorie', [CategorieController::class, "GetCategories"]);
-Route::get('unites', [UniteController::class, "GetUnites"]);
+
+Route::get('categorie', [CategorieController::class, "index"]);
+Route::get('unites', [UniteController::class, "index"]);
+Route::get('products', [ProductController::class, "index"]);

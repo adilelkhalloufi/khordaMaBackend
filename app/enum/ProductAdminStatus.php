@@ -4,7 +4,7 @@ namespace App\enum;
 
 use Filament\Support\Contracts\HasLabel;
 
-enum ProductStatus: int implements HasLabel
+enum ProductAdminStatus: int implements HasLabel
 {
 
     case Draft = 1;

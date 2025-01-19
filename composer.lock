@@ -4,82 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8aba90be7b5823ad4db1279f4bb73d82",
+    "content-hash": "f1a52061d1fca36d0cab20fd29bedf3e",
     "packages": [
-        {
-            "name": "adev/lrc",
-<<<<<<< HEAD
-            "version": "v2.0.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/adilelkhalloufi/lrc.git",
-                "reference": "06a711bd3a25a0f99fbec629abb908d820390db0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/adilelkhalloufi/lrc/zipball/06a711bd3a25a0f99fbec629abb908d820390db0",
-                "reference": "06a711bd3a25a0f99fbec629abb908d820390db0",
-=======
-            "version": "v2.0.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/adilelkhalloufi/lrc.git",
-                "reference": "a31bc55342c4938540bb26c4c4f1079caa24415a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/adilelkhalloufi/lrc/zipball/a31bc55342c4938540bb26c4c4f1079caa24415a",
-                "reference": "a31bc55342c4938540bb26c4c4f1079caa24415a",
->>>>>>> a4119b2b8480cb326f2911325e54894c744c6d4a
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.4"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^9.5"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Lrc\\LRCServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Lrc\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "adil elkhalloufi",
-                    "email": "adilelkhalloufi@gmail.com"
-                }
-            ],
-            "description": "A package to generate column constants for Laravel models",
-            "homepage": "https://adev.ma/",
-            "keywords": [
-                "columns",
-                "constants"
-            ],
-            "support": {
-                "issues": "https://github.com/adilelkhalloufi/lrc/issues",
-<<<<<<< HEAD
-                "source": "https://github.com/adilelkhalloufi/lrc/tree/v2.0.2"
-            },
-            "time": "2025-01-05T17:41:15+00:00"
-=======
-                "source": "https://github.com/adilelkhalloufi/lrc/tree/v2.0.3"
-            },
-            "time": "2025-01-06T14:00:58+00:00"
->>>>>>> a4119b2b8480cb326f2911325e54894c744c6d4a
-        },
         {
             "name": "anourvalar/eloquent-serialize",
             "version": "1.2.27",
@@ -8004,6 +7930,61 @@
     ],
     "packages-dev": [
         {
+            "name": "adev/lrc",
+            "version": "v2.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/adilelkhalloufi/lrc.git",
+                "reference": "06a711bd3a25a0f99fbec629abb908d820390db0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/adilelkhalloufi/lrc/zipball/06a711bd3a25a0f99fbec629abb908d820390db0",
+                "reference": "06a711bd3a25a0f99fbec629abb908d820390db0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.4"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.5"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Lrc\\LRCServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Lrc\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "adil elkhalloufi",
+                    "email": "adilelkhalloufi@gmail.com"
+                }
+            ],
+            "description": "A package to generate column constants for Laravel models",
+            "homepage": "https://adev.ma/",
+            "keywords": [
+                "columns",
+                "constants"
+            ],
+            "support": {
+                "issues": "https://github.com/adilelkhalloufi/lrc/issues",
+                "source": "https://github.com/adilelkhalloufi/lrc/tree/v2.0.2"
+            },
+            "time": "2025-01-05T17:41:15+00:00"
+        },
+        {
             "name": "fakerphp/faker",
             "version": "v1.24.1",
             "source": {
@@ -8268,16 +8249,16 @@
         },
         {
             "name": "laravel/pint",
-            "version": "v1.18.3",
+            "version": "v1.20.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/pint.git",
-                "reference": "cef51821608239040ab841ad6e1c6ae502ae3026"
+                "reference": "53072e8ea22213a7ed168a8a15b96fbb8b82d44b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/pint/zipball/cef51821608239040ab841ad6e1c6ae502ae3026",
-                "reference": "cef51821608239040ab841ad6e1c6ae502ae3026",
+                "url": "https://api.github.com/repos/laravel/pint/zipball/53072e8ea22213a7ed168a8a15b96fbb8b82d44b",
+                "reference": "53072e8ea22213a7ed168a8a15b96fbb8b82d44b",
                 "shasum": ""
             },
             "require": {
@@ -8288,10 +8269,10 @@
                 "php": "^8.1.0"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "^3.65.0",
-                "illuminate/view": "^10.48.24",
-                "larastan/larastan": "^2.9.11",
-                "laravel-zero/framework": "^10.4.0",
+                "friendsofphp/php-cs-fixer": "^3.66.0",
+                "illuminate/view": "^10.48.25",
+                "larastan/larastan": "^2.9.12",
+                "laravel-zero/framework": "^10.48.25",
                 "mockery/mockery": "^1.6.12",
                 "nunomaduro/termwind": "^1.17.0",
                 "pestphp/pest": "^2.36.0"
@@ -8330,7 +8311,7 @@
                 "issues": "https://github.com/laravel/pint/issues",
                 "source": "https://github.com/laravel/pint"
             },
-            "time": "2024-11-26T15:34:00+00:00"
+            "time": "2025-01-14T16:20:53+00:00"
         },
         {
             "name": "laravel/sail",

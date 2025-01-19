@@ -34,7 +34,13 @@ return new class extends Migration
                 ->nullable()
                 ->constrained('users');
 
-            $table->integer('statue')->default(1);
+            $table->integer('availability_status')
+                ->default(1)
+                ->comment("1:draft, 2:reviewing, 3:published, 4:rejected");
+
+            $table->integer('status')
+                ->default(1)
+                ->comment("1:Inspection, 2:ShowDetail,3:Close");
 
             $table->boolean("auction")->default(false);
             $table->date("date_end_auction")->nullable();
