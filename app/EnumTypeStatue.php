@@ -6,12 +6,6 @@ use Filament\Support\Contracts\HasLabel;
 
 enum EnumTypeStatue: int implements HasLabel
 {
-
-    case Inspection = 1;
-    case ShowDetail = 2;
-
-
-
     public function getLabel(): ?string
     {
         // return $this->name;
@@ -21,4 +15,6 @@ enum EnumTypeStatue: int implements HasLabel
             self::ShowDetail => 'Show details',
         };
     }
+    case Inspection = 1;
+    case ShowDetail = 2;
 }

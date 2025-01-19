@@ -4,7 +4,6 @@ namespace App\Filament\Resources\FAQResource\Pages;
 
 use App\Filament\Resources\FAQResource;
 use Filament\Actions;
-use Filament\Resources\Concerns\Translatable;
 use Filament\Resources\Pages\ListRecords;
 
 class ListFAQS extends ListRecords

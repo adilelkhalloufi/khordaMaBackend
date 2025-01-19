@@ -4,12 +4,8 @@ namespace App\Filament\Resources;
 
 use App\Filament\Imports\CategoryImporter;
 use App\Filament\Resources\CategoryResource\Pages;
-use App\Filament\Resources\CategoryResource\RelationManagers;
-use App\Filament\Resources\TranslationsResource\RelationManagers\TranslationsRelationManager;
 use App\Models\Categorie;
 use App\Models\Family;
-use Filament\Actions\ImportAction;
-use Filament\Forms;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -19,8 +15,6 @@ use Filament\Tables;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class CategoryResource extends Resource
 {
@@ -57,7 +51,7 @@ class CategoryResource extends Resource
                 TextColumn::make(Categorie::COL_DESCRIPTION)->searchable(),
                 ImageColumn::make(Categorie::COL_IMAGE),
                 TextColumn::make(Categorie::COL_DISPLAY)->numeric(),
-                TextColumn::make("family.name")
+                TextColumn::make('family.name')
                     ->label('Family')
                     ->sortable()
                     ->searchable(),

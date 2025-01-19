@@ -10,9 +10,6 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-
-
-
-Route::get('categorie', [CategorieController::class, "index"]);
-Route::get('unites', [UniteController::class, "index"]);
-Route::get('products', [ProductController::class, "index"]);
+Route::get('categorie', [CategorieController::class, 'index']);
+Route::get('unites', [UniteController::class, 'index']);
+Route::get('products', [ProductController::class, 'index']);

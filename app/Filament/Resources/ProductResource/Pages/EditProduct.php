@@ -16,6 +16,7 @@ class EditProduct extends EditRecord
             Actions\DeleteAction::make(),
         ];
     }
+
     protected function mutateFormDataBeforeSave(array $data): array
     {
         // Store attachments temporarily
@@ -36,7 +37,7 @@ class EditProduct extends EditRecord
         $this->record->attachments()->delete();
 
         // Save new attachments
-        if (!empty($this->attachments)) {
+        if (! empty($this->attachments)) {
             foreach ($this->attachments as $attachment) {
                 // Determine whether the attachment is a path or a file upload
                 $path = is_string($attachment) ? $attachment : $attachment->store('attachments');

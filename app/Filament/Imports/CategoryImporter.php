@@ -3,7 +3,6 @@
 namespace App\Filament\Imports;
 
 use App\Models\Categorie;
-use App\Models\Category;
 use Filament\Actions\Imports\ImportColumn;
 use Filament\Actions\Imports\Importer;
 use Filament\Actions\Imports\Models\Import;
@@ -41,17 +40,18 @@ class CategoryImporter extends Importer
                 Categorie::COL_FAMILY_ID => $this->data[Categorie::COL_FAMILY_ID],
             ]);
         } catch (\Exception $e) {
-            Log::error('Failed to import Family: ' . $this->data[Categorie::COL_NAME] . ' Error: ' . $e->getMessage());
+            Log::error('Failed to import Family: '.$this->data[Categorie::COL_NAME].' Error: '.$e->getMessage());
+
             return null;
         }
     }
 
     public static function getCompletedNotificationBody(Import $import): string
     {
-        $body = 'Your category import has completed and ' . number_format($import->successful_rows) . ' ' . str('row')->plural($import->successful_rows) . ' imported.';
+        $body = 'Your category import has completed and '.number_format($import->successful_rows).' '.str('row')->plural($import->successful_rows).' imported.';
 
         if ($failedRowsCount = $import->getFailedRowsCount()) {
-            $body .= ' ' . number_format($failedRowsCount) . ' ' . str('row')->plural($failedRowsCount) . ' failed to import.';
+            $body .= ' '.number_format($failedRowsCount).' '.str('row')->plural($failedRowsCount).' failed to import.';
         }
 
         return $body;

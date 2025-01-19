@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\enum\CategoryTypes;
 use App\Http\Requests\GetCategorieRequest;
 use App\Models\Categorie;
-use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -13,7 +12,6 @@ class CategorieController extends Controller
 {
     /**
      * Display a listing of the resource.
-     * @return JsonResponse
      */
     public function index(GetCategorieRequest $request): JsonResponse
     {
@@ -28,6 +26,7 @@ class CategorieController extends Controller
 
         return response()->json($categories);
     }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -76,6 +75,6 @@ class CategorieController extends Controller
         //
     }
 
-    // 
+    //
 
 }

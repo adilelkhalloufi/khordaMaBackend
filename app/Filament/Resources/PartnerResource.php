@@ -3,9 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\PartnerResource\Pages;
-use App\Filament\Resources\PartnerResource\RelationManagers;
 use App\Models\Partner;
-use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -15,17 +13,15 @@ use Filament\Tables;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class PartnerResource extends Resource
 {
-
     use Translatable;
 
     protected static ?string $model = Partner::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+
     protected static ?string $navigationGroup = 'Landing Page';
 
     public static function form(Form $form): Form
@@ -36,7 +32,7 @@ class PartnerResource extends Resource
                 TextInput::make(Partner::COL_DESCRIPTION),
                 FileUpload::make(Partner::COL_LOGO),
                 FileUpload::make(Partner::COL_URL)->url(),
-             ]);
+            ]);
     }
 
     public static function table(Table $table): Table

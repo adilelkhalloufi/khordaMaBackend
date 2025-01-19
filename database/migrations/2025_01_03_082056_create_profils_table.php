@@ -1,12 +1,10 @@
 <?php
 
-use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class() extends Migration {
     /**
      * Run the migrations.
      */
@@ -21,12 +19,12 @@ return new class extends Migration
             $table->foreignId('user_id')
                 ->nullable()
                 ->constrained('users');
-            $table->string("company_name")->nullable();
-            $table->string("company_address")->nullable();
-            $table->string("company_logo")->nullable();
-            $table->string("url")->nullable();
-            $table->string("website")->nullable();
-            $table->integer("rate")->default(0)->max(5);
+            $table->string('company_name')->nullable();
+            $table->string('company_address')->nullable();
+            $table->string('company_logo')->nullable();
+            $table->string('url')->nullable();
+            $table->string('website')->nullable();
+            $table->integer('rate')->default(0)->max(5);
             $table->timestamps();
         });
     }

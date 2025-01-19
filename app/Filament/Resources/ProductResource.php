@@ -3,13 +3,8 @@
 namespace App\Filament\Resources;
 
 use App\enum\ProductStatus;
-use App\Filament\Resources\AttachementResource\RelationManagers\ModelRelationManager;
 use App\Filament\Resources\ProductResource\Pages;
-use App\Filament\Resources\ProductResource\RelationManagers;
 use App\Models\Product;
-use App\Models\Unite;
-use App\Models\Categorie;
-use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\RichEditor;
@@ -22,9 +17,6 @@ use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-
 class ProductResource extends Resource
 {
     protected static ?string $model = Product::class;
@@ -36,7 +28,7 @@ class ProductResource extends Resource
         return $form
             ->schema([
                 Section::make('Create Product')
-                    ->description("Create product over here")
+                    ->description('Create product over here')
                     ->schema([
                         TextInput::make(Product::COL_NAME)
                             ->required()
@@ -83,7 +75,6 @@ class ProductResource extends Resource
                 //         ->required(false),
                 // ])
 
-
             ]);
     }
 
@@ -107,12 +98,11 @@ class ProductResource extends Resource
 
                 TextColumn::make(Product::COL_PRICE)
                     ->label('Price')
-                    ->money("DH")
+                    ->money('DH')
                     ->sortable(),
 
                 TextColumn::make(Product::COL_STATUE)
-                    ->label('Status')->badge()
-
+                    ->label('Status')->badge(),
 
             ])
             ->filters([])

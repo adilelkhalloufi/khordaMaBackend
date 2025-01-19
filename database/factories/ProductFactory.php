@@ -2,11 +2,9 @@
 
 namespace Database\Factories;
 
-use App\enum\ProductAdminStatus;
 use App\enum\ProductStatue;
 use App\Models\Categorie;
 use App\Models\Unite;
-use Carbon\Unit;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**

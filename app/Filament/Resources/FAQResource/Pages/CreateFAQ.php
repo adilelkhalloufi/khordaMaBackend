@@ -8,7 +8,7 @@ use Filament\Resources\Concerns\Translatable;
 use Filament\Resources\Pages\CreateRecord;
 
 class CreateFAQ extends CreateRecord
-{    
+{
     use Translatable;
 
     protected static string $resource = FAQResource::class;

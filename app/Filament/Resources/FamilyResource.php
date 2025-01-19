@@ -4,9 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Imports\FamilyImporter;
 use App\Filament\Resources\FamilyResource\Pages;
-use App\Filament\Resources\FamilyResource\RelationManagers;
 use App\Models\Family;
-use Filament\Forms;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Concerns\Translatable;
@@ -15,8 +13,6 @@ use Filament\Tables;
 use Filament\Tables\Actions\ImportAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class FamilyResource extends Resource
 {
@@ -32,7 +28,7 @@ class FamilyResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make(Family::COL_NAME)
+                TextInput::make(Family::COL_NAME),
             ]);
     }
 
@@ -40,7 +36,7 @@ class FamilyResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make(Family::COL_NAME)
+                TextColumn::make(Family::COL_NAME),
             ])
             ->filters([
                 //

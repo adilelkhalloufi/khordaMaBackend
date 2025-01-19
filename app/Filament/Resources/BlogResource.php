@@ -3,9 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\BlogResource\Pages;
-use App\Filament\Resources\BlogResource\RelationManagers;
 use App\Models\Blog;
-use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -15,8 +13,6 @@ use Filament\Tables;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class BlogResource extends Resource
 {
@@ -25,6 +21,7 @@ class BlogResource extends Resource
     protected static ?string $model = Blog::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+
     protected static ?string $navigationGroup = 'Landing Page';
 
     public static function form(Form $form): Form

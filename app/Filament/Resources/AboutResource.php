@@ -3,9 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\AboutResource\Pages;
-use App\Filament\Resources\AboutResource\RelationManagers;
 use App\Models\About;
-use Filament\Forms;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Concerns\Translatable;
@@ -13,8 +11,6 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class AboutResource extends Resource
 {
@@ -23,6 +19,7 @@ class AboutResource extends Resource
     protected static ?string $model = About::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-building-office';
+
     protected static ?string $navigationGroup = 'Landing Page';
 
     public static function form(Form $form): Form

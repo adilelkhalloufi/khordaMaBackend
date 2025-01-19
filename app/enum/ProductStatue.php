@@ -6,11 +6,6 @@ use Filament\Support\Contracts\HasLabel;
 
 enum ProductStatue: int implements HasLabel
 {
-
-    case Inspection = 1;
-    case ShowDetail = 2;
-    case Close = 3;
-
     public function getLabel(): ?string
     {
         return match ($this) {
@@ -19,4 +14,7 @@ enum ProductStatue: int implements HasLabel
             self::Close => 'Close',
         };
     }
+    case Inspection = 1;
+    case ShowDetail = 2;
+    case Close = 3;
 }

@@ -3,10 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\StatisiticResource\Pages;
-use App\Filament\Resources\StatisiticResource\RelationManagers;
-use App\Models\Statisitic;
 use App\Models\Statistic;
-use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -15,15 +12,13 @@ use Filament\Tables;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class StatisiticResource extends Resource
 {
-
     protected static ?string $model = Statistic::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+
     protected static ?string $navigationGroup = 'Landing Page';
 
     public static function form(Form $form): Form
@@ -34,7 +29,7 @@ class StatisiticResource extends Resource
                 TextInput::make(Statistic::COL_DESCRIPTION),
                 FileUpload::make(Statistic::COL_ICON),
                 TextInput::make(Statistic::COL_TOTAL)->numeric(),
-                TextInput::make(Statistic::COL_UNITE)
+                TextInput::make(Statistic::COL_UNITE),
             ]);
     }
 

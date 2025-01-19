@@ -11,7 +11,7 @@ class EditFamily extends EditRecord
     use EditRecord\Concerns\Translatable;
 
     protected static string $resource = FamilyResource::class;
-    
+
     protected function getHeaderActions(): array
     {
         return [

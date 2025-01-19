@@ -35,8 +35,9 @@ class CommentTranslatable extends Command
         $model = $this->argument('model'); // e.g., "Product"
 
         // Validate the action
-        if (!in_array($action, ['comment', 'decomment'])) {
+        if (! in_array($action, ['comment', 'decomment'])) {
             $this->error('Invalid action. Use "comment" or "decomment".');
+
             return 1;
         }
 
@@ -49,6 +50,7 @@ class CommentTranslatable extends Command
                 $files[] = $filePath;
             } else {
                 $this->error("Model file '{$model}.php' not found in app/Models.");
+
                 return 1;
             }
         } else {
@@ -88,6 +90,7 @@ class CommentTranslatable extends Command
         }
 
         $this->info('Command completed.');
+
         return 0;
     }
 }

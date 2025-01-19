@@ -16,12 +16,11 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-
         User::factory()->create([
             'name' => 'Admin Admin',
             'email' => 'admin@admin.com',
             'role' => UserRole::ADMIN,
-            'password' => bcrypt('password')
+            'password' => bcrypt('password'),
         ]);
 
         $this->call(FamilySeeder::class);

@@ -27,7 +27,7 @@ class AdminPanelProvider extends PanelProvider
     {
         return $panel
             ->default()
-            ->brandName("KhordaBack")
+            ->brandName('KhordaBack')
             ->profile()
             ->id('admin')
             ->path('admin')
@@ -39,7 +39,7 @@ class AdminPanelProvider extends PanelProvider
                     ->icon('heroicon-o-building-office'),
                 NavigationGroup::make()
                     ->label('Settings')
-                    ->icon('heroicon-s-square-3-stack-3d')
+                    ->icon('heroicon-s-square-3-stack-3d'),
 
             ])
             ->plugin(

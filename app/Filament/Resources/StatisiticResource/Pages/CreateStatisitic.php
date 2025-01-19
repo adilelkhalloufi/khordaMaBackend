@@ -11,6 +11,7 @@ class CreateStatisitic extends CreateRecord
     use CreateRecord\Concerns\Translatable;
 
     protected static string $resource = StatisiticResource::class;
+
     protected function getHeaderActions(): array
     {
         return [

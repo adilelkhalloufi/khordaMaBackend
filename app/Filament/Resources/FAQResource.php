@@ -3,9 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\FAQResource\Pages;
-use App\Filament\Resources\FAQResource\RelationManagers;
 use App\Models\FAQ;
-use Filament\Forms;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Concerns\Translatable;
@@ -13,8 +11,6 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class FAQResource extends Resource
 {
@@ -23,6 +19,7 @@ class FAQResource extends Resource
     protected static ?string $model = FAQ::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+
     protected static ?string $navigationGroup = 'Landing Page';
 
     public static function form(Form $form): Form
@@ -31,8 +28,6 @@ class FAQResource extends Resource
             ->schema([
                 TextInput::make(FAQ::COL_ANSWER),
                 TextInput::make(FAQ::COL_QUESTION),
-
-
 
             ]);
     }

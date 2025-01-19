@@ -6,12 +6,6 @@ use Filament\Support\Contracts\HasLabel;
 
 enum ProductAdminStatus: int implements HasLabel
 {
-
-    case Draft = 1;
-    case Reviewing = 2;
-    case Published = 3;
-    case Rejected = 4;
-
     public function getLabel(): ?string
     {
         return match ($this) {
@@ -22,7 +16,7 @@ enum ProductAdminStatus: int implements HasLabel
         };
     }
 
-    public function getColor(): string | array | null
+    public function getColor(): string|array|null
     {
         return match ($this) {
             self::Draft => 'gray',
@@ -51,4 +45,8 @@ enum ProductAdminStatus: int implements HasLabel
             self::Rejected => 'A staff member has decided this is not appropriate for the website.',
         };
     }
+    case Draft = 1;
+    case Reviewing = 2;
+    case Published = 3;
+    case Rejected = 4;
 }

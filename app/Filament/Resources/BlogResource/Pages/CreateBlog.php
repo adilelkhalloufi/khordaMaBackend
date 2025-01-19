@@ -13,7 +13,6 @@ class CreateBlog extends CreateRecord
 
     protected static string $resource = BlogResource::class;
 
-
     protected function getHeaderActions(): array
     {
         return [
