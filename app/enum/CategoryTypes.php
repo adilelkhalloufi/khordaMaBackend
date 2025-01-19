@@ -6,6 +6,8 @@ use Filament\Support\Contracts\HasLabel;
 
 enum CategoryTypes: int implements HasLabel
 {
+    case Scrap = 1;
+    case Stagnant = 2;
     public function getLabel(): ?string
     {
         return match ($this) {
@@ -13,6 +15,4 @@ enum CategoryTypes: int implements HasLabel
             self::Stagnant => 'Stagnant',
         };
     }
-    case Scrap = 1;
-    case Stagnant = 2;
 }

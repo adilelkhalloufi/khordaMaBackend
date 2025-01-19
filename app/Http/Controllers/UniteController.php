@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\UniteResource;
 use App\Models\Unite;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -19,7 +20,7 @@ class UniteController extends Controller
             return response()->json([], 404);
         }
 
-        return response()->json($unite);
+        return response()->json(UniteResource::collection($unite));
     }
 
     /**

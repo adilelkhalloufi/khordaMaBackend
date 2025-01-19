@@ -15,7 +15,7 @@ class ProductController extends Controller
     public function index()
     {
         $Product = Product::with(['categorie', 'unite'])
-            ->where(Product::COL_STATUE, ProductAdminStatus::Published->value)
+            ->where(Product::COL_AVAILABILITY_STATUS, ProductAdminStatus::Published->value)
             ->get();
 
         return response()->json(ProductRessource::collection($Product));

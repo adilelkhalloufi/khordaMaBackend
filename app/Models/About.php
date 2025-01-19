@@ -8,7 +8,9 @@ use Spatie\Translatable\HasTranslations;
 class About extends Model
 {
 
-    use HasTranslations;    // public $translatable = [self::COL_TITLE, self::COL_DESCRIPTION];
+    // public $translatable = [self::COL_TITLE, self::COL_DESCRIPTION];}
+
+    use HasTranslations;
     public const TABLE_NAME = 'abouts';
 
     public const COL_ID = 'id';

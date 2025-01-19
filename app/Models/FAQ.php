@@ -3,12 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Spatie\Translatable\HasTranslations;
 
 class FAQ extends Model
 {
-
-    use HasTranslations;    // public $translatable = [self::COL_QUESTION, self::COL_ANSWER];
     public const TABLE_NAME = 'f_a_q_s';
 
     public const COL_ID = 'id';

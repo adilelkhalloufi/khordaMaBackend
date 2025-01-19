@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\enum\CategoryTypes;
 use App\Http\Requests\GetCategorieRequest;
+use App\Http\Resources\CategoriesResource;
 use App\Models\Categorie;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -24,7 +25,7 @@ class CategorieController extends Controller
             return response()->json([], 404);
         }
 
-        return response()->json($categories);
+        return response()->json(CategoriesResource::collection($categories));
     }
 
     /**
