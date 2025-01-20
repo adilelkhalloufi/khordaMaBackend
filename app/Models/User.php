@@ -10,7 +10,6 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
@@ -34,6 +33,7 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
     public const TABLE_NAME = 'users';
 
     public const COL_ID = 'id';

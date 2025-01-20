@@ -26,6 +26,7 @@ class CategorieController extends Controller
         if ($categories->isEmpty()) {
             return response()->json([], 404);
         }
+
         return response()->json(CategoriesResource::collection($categories));
         // return response()->json($categories);
     }

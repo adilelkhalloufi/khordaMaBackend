@@ -15,6 +15,7 @@ class CategoriesResource extends JsonResource
     public function toArray(Request $request): array
     {
         $name = json_decode($this->getRawOriginal('name'), true);
+
         return [
             'id' => $this->id,
             'name' => $name,

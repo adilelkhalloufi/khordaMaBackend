@@ -10,12 +10,12 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Product extends Model
 {
-
     use HasFactory;
 
     protected $casts = [
         'statue' => ProductStatue::class,
     ];
+
     public const TABLE_NAME = 'products';
 
     public const COL_ID = 'id';

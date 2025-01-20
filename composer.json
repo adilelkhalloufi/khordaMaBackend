@@ -70,6 +70,11 @@
         "pint": "pint",
         "refactor": "rector",
         "php-cs-fixer": "php-cs-fixer fix",
+        "better":[
+            "@refactor",
+            "@php-cs-fixer",
+            "@pint"
+        ],
         "config-start": [
             "php artisan db:wipe",
             "php artisan make:constants all --delete",
@@ -78,9 +83,8 @@
             "php artisan make:constants all",
             "php artisan translatable:toggle decomment",
             "php artisan db:seed",
-            "@pint",
-            "@refactor",
-            "@php-cs-fixer"
+            "@better"
+           
         ]
     },
     "extra": {

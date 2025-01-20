@@ -9,10 +9,10 @@ use Spatie\Translatable\HasTranslations;
 
 class Categorie extends Model
 {
-
     use HasFactory, HasTranslations;
 
     public $translatable = [self::COL_NAME, self::COL_SLUG, self::COL_DESCRIPTION];
+
     public const TABLE_NAME = 'categories';
 
     public const COL_ID = 'id';

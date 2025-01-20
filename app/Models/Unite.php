@@ -8,10 +8,10 @@ use Spatie\Translatable\HasTranslations;
 
 class Unite extends Model
 {
-
     use HasFactory, HasTranslations;
 
     public $translatable = [self::COL_NAME];
+
     public const TABLE_NAME = 'unites';
 
     public const COL_ID = 'id';

@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class Attachement extends Model
 {
-
     protected $guarded = [];
+
     public const TABLE_NAME = 'attachements';
 
     public const COL_ID = 'id';
