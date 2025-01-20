@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\enum\ProductStatue;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -22,7 +23,7 @@ class ProductRessource extends JsonResource
             'price' => $this->price,
             'categorie' => $this->categorie,
             'unite' => $this->unite,
-            'status' => $this->status,
+            'status' => ProductStatue::from($this->status)->getLabel(),
             'image' => $this->image,
             'created_at' => $this->created_at,
         ];
