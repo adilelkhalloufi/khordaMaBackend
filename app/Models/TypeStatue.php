@@ -4,8 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class TypeStatue extends Model
+class Statue extends Model
 {
+    
     public const TABLE_NAME = 'type_statues';
 
     public const COL_ID = 'id';
@@ -17,4 +18,9 @@ class TypeStatue extends Model
     public const COL_UPDATED_AT = 'updated_at';
 
     //
+
+    public function products()
+    {
+        return $this->hasMany(Product::class, 'type_statue_id', 'id');
+    }   
 }

@@ -15,4 +15,9 @@ class Order extends Model
     public const COL_UPDATED_AT = 'updated_at';
 
     //
+
+    public function products()
+    {
+        return $this->belongsToMany(Product::class, 'order_product', 'order_id', 'product_id');
+    }
 }

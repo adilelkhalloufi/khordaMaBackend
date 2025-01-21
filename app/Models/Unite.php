@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Spatie\Translatable\HasTranslations;
 
 class Unite extends Model
@@ -21,4 +22,11 @@ class Unite extends Model
     public const COL_CREATED_AT = 'created_at';
 
     public const COL_UPDATED_AT = 'updated_at';
+
+    public function products(): BelongsToMany
+    {
+        return $this->belongsToMany(Product::class, 'product_unite', 'unite_id', 'product_id');
+    }
+
+    
 }
