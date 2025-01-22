@@ -21,10 +21,11 @@ class ProductRessource extends JsonResource
             'name' => $this->name,
             'description' => $this->description,
             'price' => $this->price,
-            'categorie' => $this->categorie,
-            'unite' => $this->unite,
+            'categorie' => CategoriesResource::make($this->categorie) ,
+            'unite' => UniteResource::make($this->unite),
             'status' => ProductStatue::from($this->status)->getLabel(),
             'image' => $this->image,
+            'favaris' => $this->favaris == 1 ? true : false,
             'created_at' => $this->created_at,
         ];
     }
