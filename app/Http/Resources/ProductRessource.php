@@ -25,6 +25,7 @@ class ProductRessource extends JsonResource
             'unite' => UniteResource::make($this->unite),
             'status' => ProductStatue::from($this->status)->getLabel(),
             'image' => $this->image,
+            'quantity' => $this->quantity,
             'favaris' => $this->favaris == 1 ? true : false,
             'created_at' => $this->created_at,
         ];
