@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategorieController;
+use App\Http\Controllers\FavarisController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UniteController;
 use Illuminate\Http\Request;
@@ -13,3 +14,5 @@ Route::get('/user', function (Request $request) {
 Route::get('categorie', [CategorieController::class, 'index']);
 Route::get('unites', [UniteController::class, 'index']);
 Route::get('products', [ProductController::class, 'index']);
+Route::post('addToFavaris', FavarisController::class);
+
