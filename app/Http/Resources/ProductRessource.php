@@ -26,6 +26,12 @@ class ProductRessource extends JsonResource
             'status' => ProductStatue::from($this->status)->getLabel(),
             'image' => $this->image,
             'quantity' => $this->quantity,
+            'availability_status' => $this->availability_status,
+            'auction' => $this->auction == 1 ? true : false,
+            'date_end_auction' => $this->date_end_auction,
+            'conditions_document' => $this->conditions_document,
+            'conditions_document_price' => $this->conditions_document_price,
+            'show_company' => $this->show_company == 1 ? true : false,
             'favaris' => $this->favaris == 1 ? true : false,
             'created_at' => $this->created_at,
         ];
