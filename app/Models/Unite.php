@@ -28,5 +28,5 @@ class Unite extends Model
         return $this->belongsToMany(Product::class, 'product_unite', 'unite_id', 'product_id');
     }
 
-    
+
 }

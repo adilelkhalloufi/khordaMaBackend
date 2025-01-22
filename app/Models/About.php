@@ -25,5 +25,5 @@ class About extends Model
 
     public const COL_UPDATED_AT = 'updated_at';
 
-    
+
 }

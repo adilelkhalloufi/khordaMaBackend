@@ -22,5 +22,5 @@ class Statue extends Model
     public function products()
     {
         return $this->hasMany(Product::class, 'type_statue_id', 'id');
-    }   
+    }
 }

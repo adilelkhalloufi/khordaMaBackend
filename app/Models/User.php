@@ -6,6 +6,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -55,19 +56,6 @@ class User extends Authenticatable
 
     public const COL_UPDATED_AT = 'updated_at';
 
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
-    protected function casts(): array
-    {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
-    }
-
     public function favorites(): BelongsToMany
     {
         return $this->belongsToMany(Product::class, 'favorites');
@@ -81,5 +69,27 @@ class User extends Authenticatable
     public function orders(): BelongsToMany
     {
         return $this->belongsToMany(Order::class, 'orders');
+    }
+
+    public function specialities(): BelongsToMany
+    {
+        return $this->belongsToMany(Categorie::class, 'profil_categories');
+    }
+    public function profil(): HasMany
+    {
+        return $this->hasMany(Profil::class);
+    }
+
+    /**
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+    protected function casts(): array
+    {
+        return [
+            'email_verified_at' => 'datetime',
+            'password' => 'hashed',
+        ];
     }
 }

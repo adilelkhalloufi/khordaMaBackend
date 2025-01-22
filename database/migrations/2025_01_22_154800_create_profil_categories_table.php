@@ -4,23 +4,20 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class() extends Migration {
+return new class extends Migration {
     /**
      * Run the migrations.
      */
     public function up(): void
     {
-        Schema::create('bids', function (Blueprint $table) {
+        Schema::create('profil_categories', function (Blueprint $table) {
             $table->id();
-            $table->decimal('price')->default(0);
-
-            $table->foreignId('product_id')
-                ->nullable()
-                ->constrained('products');
             $table->foreignId('user_id')
                 ->nullable()
                 ->constrained('users');
-
+            $table->foreignId('categorie_id')
+                ->nullable()
+                ->constrained('categories');
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ return new class() extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('bids');
+        Schema::dropIfExists('profil_categories');
     }
 };

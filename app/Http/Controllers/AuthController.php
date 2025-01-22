@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
-    // creat efor me login and register function for api with sanctom 
+    // creat efor me login and register function for api with sanctom
     // and return token for user
     // and return user data
     // and return error if user not found

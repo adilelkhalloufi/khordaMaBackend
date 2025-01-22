@@ -5,8 +5,7 @@ use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\FavarisController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UniteController;
- use Illuminate\Support\Facades\Route;
- 
+use Illuminate\Support\Facades\Route;
 
 //  Public routes
 Route::get('categorie', [CategorieController::class, 'index']);
@@ -19,8 +18,8 @@ Route::post('register', [AuthController::class, 'register']);
 
 // Protected routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
+    
     Route::post('logout', [AuthController::class, 'logout']);
     Route::post('addToFavaris', FavarisController::class);
+
 });
-
-

@@ -37,4 +37,11 @@ class Profil extends Model
     public const COL_UPDATED_AT = 'updated_at';
 
     //
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+
 }
