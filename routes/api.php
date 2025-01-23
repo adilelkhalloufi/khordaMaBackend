@@ -15,6 +15,8 @@ Route::get('products', [ProductController::class, 'index']);
 
 Route::post('login', [AuthController::class, 'login']);
 Route::post('register', [AuthController::class, 'register']);
+Route::post('forget-password', [AuthController::class, 'forgetPassword']);
+
 
 // Protected routes
 Route::group(['middleware' => ['auth:sanctum']], function () {

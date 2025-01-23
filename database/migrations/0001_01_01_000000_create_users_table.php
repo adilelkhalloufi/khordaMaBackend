@@ -25,9 +25,13 @@ return new class() extends Migration {
             ->default(4)
             ->comment('1:admin;2:seller;3:vender;4:user');
             
-
+            // profil has status
+            $table->integer('status')
+            ->default(1)
+            ->comment('1:active;2:inactive;3:pending;4:deleted');
 
             $table->timestamp('email_verified_at')->nullable();
+            $table->string('code_verify')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
