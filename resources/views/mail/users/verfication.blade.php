@@ -1,11 +1,13 @@
 <x-mail::message>
-# Introduction
+<x-slot name="subject">Verify Your Email Address</x-slot>
 
-The body of your message.
+Hello! {{ $user->name }},
 
-<x-mail::button :url="''">
-Button Text
-</x-mail::button>
+Code :  {{ $user->code_verify }}
+
+You are receiving this email because we received a registration request for your email address.
+If you did not make this request,
+you can ignore this email.
 
 Thanks,<br>
 {{ config('app.name') }}
