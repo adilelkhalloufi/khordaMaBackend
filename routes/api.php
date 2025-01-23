@@ -24,4 +24,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('logout', [AuthController::class, 'logout']);
     Route::post('addToFavaris', FavarisController::class);
 
+    //api to create products
+    Route::resources('product',ProductController::class);
+
+
 });

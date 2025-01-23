@@ -13,6 +13,11 @@ return new class() extends Migration {
         Schema::create('bids', function (Blueprint $table) {
             $table->id();
             $table->decimal('price')->default(0);
+            $table->integer('quantity')->default(0);
+            $table->string('description')->nullable();
+            $table->integer('status')
+                ->default(1)
+                ->comment('1:active;2:inactive;3:pending;4:deleted');
 
             $table->foreignId('product_id')
                 ->nullable()
