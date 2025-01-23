@@ -44,7 +44,7 @@ return new class() extends Migration {
 
             $table->boolean('conditions_document')->default(false);
             $table->boolean('conditions_document_price')->default(10);
-
+            $table->boolean('min_price')->default(0);
             $table->boolean('show_company')->default(false);
 
             $table->timestamps();

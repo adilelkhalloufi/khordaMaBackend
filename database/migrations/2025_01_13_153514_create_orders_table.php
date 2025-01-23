@@ -12,6 +12,20 @@ return new class() extends Migration {
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+
+            $table->foreignId('user_id')
+                ->nullable()
+                ->constrained('users');
+            $table->foreignId('product_id')
+                ->nullable()
+                ->constrained('products');
+            $table->integer('quantity')->default(0);
+            $table->decimal('price')->default(0);
+            $table->integer('status')
+                ->default(1)
+                ->comment('1:active;2:inactive;3:pending;4:deleted');
+                      
+
             $table->timestamps();
         });
     }
