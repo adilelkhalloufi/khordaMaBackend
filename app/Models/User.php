@@ -74,6 +74,11 @@ class User extends Authenticatable
         return $this->belongsToMany(Order::class, 'orders');
     }
 
+    public function bids(): BelongsToMany
+    {
+        return $this->belongsToMany(Bid::class, 'bids');
+    }
+    
     public function specialities(): BelongsToMany
     {
         return $this->belongsToMany(Categorie::class, 'profil_categories');

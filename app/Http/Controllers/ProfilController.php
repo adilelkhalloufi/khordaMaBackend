@@ -28,7 +28,20 @@ class ProfilController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // create profile for user
+        $request->validate([
+            'user_id' => 'required',
+            'phone' => 'required',
+            'address' => 'required',
+            'city' => 'required',
+            'country' => 'required',
+        ]);
+
+    
+        $profil = auth()->user()->profil()->create($request->validated());
+    
+        return response()->json($profil);
+
     }
 
     /**

@@ -12,7 +12,12 @@ class BidController extends Controller
      */
     public function index()
     {
-        //
+        // list all bids for this user
+        $bids = Bid::where('user_id', auth()->id())
+        ->get();
+
+        return response()->json($bids);
+
     }
 
     /**
@@ -20,7 +25,7 @@ class BidController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -28,7 +33,20 @@ class BidController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // add new bid 
+        $request->validate([
+            'price' => 'required',
+            'product_id' => 'required',
+        ]);
+
+        $bid = $this
+        ->auth()
+        ->user()
+        ->bids()
+        ->create($request->validated());
+
+        return response()->json($bid);
+
     }
 
     /**
@@ -60,6 +78,11 @@ class BidController extends Controller
      */
     public function destroy(Bid $bid)
     {
-        //
+        // delete bid
+        $bid->delete();
+
+        return response()->json([
+            'message' => 'Bid deleted successfully'
+        ]);
     }
 }

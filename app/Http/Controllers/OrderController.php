@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -10,56 +11,52 @@ class OrderController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index() : JsonResponse
     {
-        //
+        // list order for this user
+        $orders = Order::where('user_id', auth()->id())
+        ->get();
+
+        return response()->json($orders);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
+   
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        //
-    }
+        // create new order
+        $request->validate([
+            'product_id' => 'required',
+            'quantity' => 'required',
+          
+        ]);
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Order $order)
-    {
-        //
-    }
+        $order = $this
+        ->auth()
+        ->user()
+        ->orders() 
+        ->create($request->validated());
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Order $order)
-    {
-        //
+        return response()->json($order);
     }
+ 
+ 
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Order $order)
-    {
-        //
-    }
+ 
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Order $order)
     {
-        //
+        // delete order
+        $order->delete();
+
+        return response()->json([
+            'message' => 'Order deleted successfully'
+        ]);
     }
 }

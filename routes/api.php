@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BidController;
 use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\FavarisController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UniteController;
 use Illuminate\Support\Facades\Route;
@@ -22,10 +24,15 @@ Route::post('forget-password', [AuthController::class, 'forgetPassword']);
 Route::group(['middleware' => ['auth:sanctum']], function () {
     
     Route::post('logout', [AuthController::class, 'logout']);
-    Route::post('addToFavaris', FavarisController::class);
-
+    
     //api to create products
     Route::resources('product',ProductController::class);
+    
+    Route::post('addToFavaris', FavarisController::class);
+    Route::resources('order', OrderController::class);
+    Route::resources('bid', BidController::class);
+
+
 
 
 });
