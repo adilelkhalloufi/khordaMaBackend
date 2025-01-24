@@ -6,6 +6,8 @@ use App\Models\Categorie;
 use App\Models\Favorite;
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\Profil;
+use App\Models\Specialitie;
 use App\Models\Unite;
 use App\Models\User;
 
@@ -24,6 +26,7 @@ it("to array",function(){
         User::COL_CITY_ID,
         User::COL_ROLE,
         User::COL_STATUS,
+        User::COL_SPECIALITIE_ID,
         User::COL_EMAIL_VERIFIED_AT,
         User::COL_CODE_VERIFY,
         User::COL_CREATED_AT,
@@ -35,8 +38,7 @@ it("to array",function(){
 
 it('may have products', function () {
 
-    Categorie::factory()->count(4)->create();
-    Unite::factory()->count(4)->create();   
+     
     $user = User::factory()->hasProducts(3)->create();
 
     expect($user->products)->toHaveCount(3)
@@ -45,7 +47,7 @@ it('may have products', function () {
 
 it('may have favorites', function () {
     
-    $products = Product::factory()->count(5)->create();
+        $products = Product::factory()->count(5)->create();
 
      $user = User::factory()->create();
 
@@ -75,23 +77,26 @@ it('may have orders', function () {
         ->each->toBeInstanceOf(Order::class);
 });
 
-it('may have specialities', function () {
-    $categories = Categorie::factory()->count(5)->create();
-
+it('may have a specialitie', function () {
     $user = User::factory()->create();
+    $specialitie = Specialitie::factory()->create();
 
-    $user->specialities()->attach($categories->take(3)); // Attach 3 categories as specialities
+    $user->specialitie()->associate($specialitie)->save();
 
-    expect($user->specialities)->toHaveCount(3);
-
-    $specialityIds = $user->specialities->pluck('id')->toArray();
-    expect($specialityIds)->toEqual($categories->take(3)->pluck('id')->toArray());
+    expect($user->specialitie)->toBeInstanceOf(Specialitie::class);
 });
 
-// it('may have a profil', function () {
-//     $user = User::factory()->hasProfil()->create();
 
-//     expect($user->profil)->toBeInstanceOf(Profil::class);
-// });
+it('may have a profil', function () {
+
+    $Profil = Profil::factory()->create();
+
+    expect($user->profil)->toBeInstanceOf(Profil::class);
+
+ 
+});
+
+ 
+ 
 
 
