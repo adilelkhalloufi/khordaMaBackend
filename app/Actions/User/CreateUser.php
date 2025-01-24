@@ -15,15 +15,15 @@ class CreateUser
     {
         return DB::transaction(function () use ($input) {
            
-            $user = User::create(
-                [
-                    User::COL_FIRST_NAME => $input[User::COL_FIRST_NAME],
-                    User::COL_LAST_NAME => $input[User::COL_LAST_NAME],
-                    User::COL_EMAIL => $input[User::COL_EMAIL],
-                    User::COL_PASSWORD => bcrypt($input[User::COL_PASSWORD]),
-                ]);
-            
-            Mail::to($user->email)->send(new CodeVerification($user));
+                $user = User::create(
+                    [
+                        User::COL_FIRST_NAME => $input[User::COL_FIRST_NAME],
+                        User::COL_LAST_NAME => $input[User::COL_LAST_NAME],
+                        User::COL_EMAIL => $input[User::COL_EMAIL],
+                        User::COL_PASSWORD => bcrypt($input[User::COL_PASSWORD]),
+                    ]);
+                
+                Mail::to($user->email)->send(new CodeVerification($user));
             
             return $user;
 

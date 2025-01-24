@@ -6,7 +6,8 @@ use App\Actions\User\CreateUser;
 use App\Models\User;
   
 it('creates a new user', function () {
- 
+    
+    
     $createUserAction = new CreateUser();
 
     $user = $createUserAction->execute([

@@ -15,16 +15,7 @@ class User extends Authenticatable
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var list<string>
-     */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+ 
 
     /**
      * The attributes that should be hidden for serialization.
@@ -68,30 +59,33 @@ class User extends Authenticatable
 
     public const COL_UPDATED_AT = 'updated_at';
 
-    public function favorites(): BelongsToMany
+    public function favoriteProducts(): BelongsToMany
     {
-        return $this->belongsToMany(Product::class, 'favorites');
+        return $this->belongsToMany(Product::class, 'favorites', 'user_id', 'product_id');
+    }
+    public function bidproducts(): BelongsToMany
+    {
+        return $this->belongsToMany(Product::class, 'bids','user_id', 'product_id');
     }
 
-    public function products(): BelongsToMany
-    {
-        return $this->belongsToMany(Product::class, 'products');
-    }
-
-    public function orders(): BelongsToMany
-    {
-        return $this->belongsToMany(Order::class, 'orders');
-    }
-
-    public function bids(): BelongsToMany
-    {
-        return $this->belongsToMany(Bid::class, 'bids');
-    }
-
+    
     public function specialities(): BelongsToMany
     {
-        return $this->belongsToMany(Categorie::class, 'profil_categories');
+        return $this->belongsToMany(Categorie::class, 'profil_categories', 'user_id', 'categorie_id');
     }
+    
+    public function products(): HasMany
+    {
+        return $this->hasMany(Product::class, 'user_id', 'id');
+    }
+
+    public function orders(): HasMany
+    {
+        return $this->HasMany(Order::class, 'user_id', 'id');
+    }
+
+
+
 
     public function profil(): HasMany
     {

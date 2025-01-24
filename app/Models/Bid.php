@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Bid extends Model
 {
@@ -26,5 +27,16 @@ class Bid extends Model
 
     public const COL_UPDATED_AT = 'updated_at';
 
-    //
+    
+    public function product(): BelongsTo
+    {
+        return $this->belongsTo(Product::class);
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
+ 
 }

@@ -20,13 +20,13 @@ class ProductFactory extends Factory
      */
     public function definition(): array
     {
-        return [
+         return [
             'name' => $this->faker->name,
             'description' => $this->faker->text,
-            'price' => $this->faker->randomFloat(2, 0, 1000),
+            'price' => $this->faker->randomNumber(2),
             'quantity' => $this->faker->randomNumber(2),
-            'categorie_id' => random_int(1, Categorie::count()),
-            'unite_id' => random_int(1, Unite::count()),
+            'categorie_id' => Categorie::factory(),
+            'unite_id' => Unite::factory(),
             'availability_status' => $this->faker->randomElement([ProductAdminStatus::Published, ProductAdminStatus::Draft]),
             'image' => $this->faker->imageUrl(),
             'status' => $this->faker->randomElement([ProductStatue::Inspection, ProductStatue::ShowDetail, ProductStatue::Close]),
