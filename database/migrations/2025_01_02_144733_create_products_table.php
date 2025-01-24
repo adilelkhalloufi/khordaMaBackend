@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class() extends Migration
-{
+return new class() extends Migration {
     /**
      * Run the migrations.
      */
@@ -35,14 +34,11 @@ return new class() extends Migration
             $table->integer('availability_status')
                 ->default(1)
                 ->comment('1:draft, 2:reviewing, 3:published, 4:rejected');
-
             $table->integer('status')
                 ->default(1)
                 ->comment('1:Inspection, 2:ShowDetail,3:Close');
-
             $table->boolean('auction')->default(false);
             $table->date('date_end_auction')->nullable();
-
             $table->boolean('conditions_document')->default(false);
             $table->boolean('conditions_document_price')->default(10);
             $table->boolean('min_price')->default(0);
