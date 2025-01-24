@@ -3,7 +3,6 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
@@ -38,11 +37,9 @@ class CodeVerification extends Mailable
     {
         return new Content(
             markdown: 'mail.users.verfication',
-            with:
-            [
+            with: [
                 'user' => $this->user,
             ],
-           
         );
     }
 

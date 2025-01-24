@@ -18,7 +18,8 @@ class ProductController extends Controller
             ->where(Product::COL_AVAILABILITY_STATUS, ProductAdminStatus::Published->value)
             ->get();
 
-        return response()->json(ProductRessource::collection($Product));
+        return response()
+            ->json(ProductRessource::collection($Product));
     }
 
     /**

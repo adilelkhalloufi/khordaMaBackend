@@ -37,9 +37,8 @@ class ProfilController extends Controller
             'country' => 'required',
         ]);
 
-    
         $profil = auth()->user()->profil()->create($request->validated());
-    
+
         return response()->json($profil);
 
     }

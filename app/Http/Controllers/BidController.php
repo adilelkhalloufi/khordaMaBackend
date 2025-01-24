@@ -14,7 +14,7 @@ class BidController extends Controller
     {
         // list all bids for this user
         $bids = Bid::where('user_id', auth()->id())
-        ->get();
+            ->get();
 
         return response()->json($bids);
 
@@ -23,27 +23,24 @@ class BidController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        
-    }
+    public function create() {}
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        // add new bid 
+        // add new bid
         $request->validate([
             'price' => 'required',
             'product_id' => 'required',
         ]);
 
         $bid = $this
-        ->auth()
-        ->user()
-        ->bids()
-        ->create($request->validated());
+            ->auth()
+            ->user()
+            ->bids()
+            ->create($request->validated());
 
         return response()->json($bid);
 
@@ -82,7 +79,7 @@ class BidController extends Controller
         $bid->delete();
 
         return response()->json([
-            'message' => 'Bid deleted successfully'
+            'message' => 'Bid deleted successfully',
         ]);
     }
 }

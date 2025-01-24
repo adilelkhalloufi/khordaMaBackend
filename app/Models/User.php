@@ -4,14 +4,11 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
-use App\Mail\CodeVerification;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Facades\Mail;
 
 class User extends Authenticatable
 {
@@ -43,15 +40,27 @@ class User extends Authenticatable
 
     public const COL_ID = 'id';
 
-    public const COL_NAME = 'name';
+    public const COL_FIRST_NAME = 'first_name';
+
+    public const COL_LAST_NAME = 'last_name';
 
     public const COL_EMAIL = 'email';
 
-    public const COL_EMAIL_VERIFIED_AT = 'email_verified_at';
+    public const COL_PHONE = 'phone';
 
-    public const COL_PASSWORD = 'password';
+    public const COL_ADDRESS = 'address';
+
+    public const COL_CITY_ID = 'city_id';
 
     public const COL_ROLE = 'role';
+
+    public const COL_STATUS = 'status';
+
+    public const COL_EMAIL_VERIFIED_AT = 'email_verified_at';
+
+    public const COL_CODE_VERIFY = 'code_verify';
+
+    public const COL_PASSWORD = 'password';
 
     public const COL_REMEMBER_TOKEN = 'remember_token';
 
@@ -78,19 +87,18 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Bid::class, 'bids');
     }
-    
+
     public function specialities(): BelongsToMany
     {
         return $this->belongsToMany(Categorie::class, 'profil_categories');
     }
+
     public function profil(): HasMany
     {
         return $this->hasMany(Profil::class);
     }
 
-    // function to send code verfecation 
-
- 
+    // function to send code verfecation
 
     /**
      * Get the attributes that should be cast.

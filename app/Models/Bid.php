@@ -12,6 +12,12 @@ class Bid extends Model
 
     public const COL_PRICE = 'price';
 
+    public const COL_QUANTITY = 'quantity';
+
+    public const COL_DESCRIPTION = 'description';
+
+    public const COL_STATUS = 'status';
+
     public const COL_PRODUCT_ID = 'product_id';
 
     public const COL_USER_ID = 'user_id';

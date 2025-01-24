@@ -21,7 +21,7 @@ class ProductRessource extends JsonResource
             'name' => $this->name,
             'description' => $this->description,
             'price' => $this->price,
-            'categorie' => CategoriesResource::make($this->categorie) ,
+            'categorie' => CategoriesResource::make($this->categorie),
             'unite' => UniteResource::make($this->unite),
             'status' => ProductStatue::from($this->status)->getLabel(),
             'image' => $this->image,

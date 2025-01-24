@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Statue extends Model
 {
-    
     public const TABLE_NAME = 'type_statues';
 
     public const COL_ID = 'id';

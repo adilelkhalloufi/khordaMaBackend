@@ -10,21 +10,19 @@ class Profil extends Model
 
     public const COL_ID = 'id';
 
-    public const COL_PHONE = 'phone';
-
-    public const COL_DATE_VERIFICATION = 'date_verification';
-
-    public const COL_STATUS = 'status';
-
-    public const COL_COINS = 'coins';
-
-    public const COL_USER_ID = 'user_id';
-
     public const COL_COMPANY_NAME = 'company_name';
 
     public const COL_COMPANY_ADDRESS = 'company_address';
 
     public const COL_COMPANY_LOGO = 'company_logo';
+
+    public const COL_LATITUDE = 'latitude';
+
+    public const COL_LONGITUDE = 'longitude';
+
+    public const COL_COINS = 'coins';
+
+    public const COL_USER_ID = 'user_id';
 
     public const COL_URL = 'url';
 
@@ -42,6 +40,4 @@ class Profil extends Model
     {
         return $this->belongsTo(User::class);
     }
-
-
 }

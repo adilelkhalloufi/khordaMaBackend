@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 
 class FavarisController extends Controller
 {
- 
     public function __invoke(Request $request)
     {
         $user = auth()->user();
@@ -14,7 +13,7 @@ class FavarisController extends Controller
         $user->favorites()->attach(request('product_id'));
 
         return response()->json([
-            'message' => 'Product added to favaris'
+            'message' => 'Product added to favaris',
         ]);
 
     }

@@ -4,7 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class() extends Migration {
+return new class() extends Migration
+{
     /**
      * Run the migrations.
      */
@@ -24,7 +25,6 @@ return new class() extends Migration {
             $table->integer('status')
                 ->default(1)
                 ->comment('1:active;2:inactive;3:pending;4:deleted');
-                      
 
             $table->timestamps();
         });

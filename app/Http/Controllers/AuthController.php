@@ -15,16 +15,16 @@ class AuthController extends Controller
     // and return user data
     // and return error if user not found
 
-    public function login(Request $request) :  JsonResponse
+    public function login(Request $request): JsonResponse
     {
         $request->validate([
             'email' => 'required|email',
             'password' => 'required',
         ]);
 
-        if (!auth()->attempt($request->only('email', 'password'))) {
+        if (! auth()->attempt($request->only('email', 'password'))) {
             return response([
-                'message' => 'Invalid credentials'
+                'message' => 'Invalid credentials',
             ], 401);
         }
 
@@ -34,11 +34,11 @@ class AuthController extends Controller
 
         return response()->json([
             'user' => $user,
-            'token' => $token
+            'token' => $token,
         ]);
     }
 
-    public function register(Request $request) : JsonResponse
+    public function register(Request $request): JsonResponse
     {
         $request->validate([
             'name' => 'required',
@@ -58,26 +58,25 @@ class AuthController extends Controller
 
         return response()->json([
             'user' => $user,
-            'token' => $token
+            'token' => $token,
         ]);
     }
 
- 
-    public function logout(Request $request) : JsonResponse
+    public function logout(Request $request): JsonResponse
     {
         auth()->user()->tokens()->delete();
 
         return response()->json([
-            'message' => 'Logged out'
+            'message' => 'Logged out',
         ]);
     }
 
-    public function me(Request $request) : JsonResponse
+    public function me(Request $request): JsonResponse
     {
         return response()->json(auth()->user());
     }
 
-    public function updateProfile(Request $request) : JsonResponse
+    public function updateProfile(Request $request): JsonResponse
     {
         $user = auth()->user();
 
@@ -86,34 +85,32 @@ class AuthController extends Controller
         return response()->json($user);
     }
 
-    public function updatePassword(Request $request) : JsonResponse
+    public function updatePassword(Request $request): JsonResponse
     {
         $user = auth()->user();
 
         $user->update([
-            'password' => bcrypt($request->password)
+            'password' => bcrypt($request->password),
         ]);
 
         return response()->json($user);
     }
 
-
-    public function sendCodeVerification() : void
+    public function sendCodeVerification(): void
     {
         $user = $this->auth()->user();
 
         $code = rand(1000, 9999);
-        
+
         $user->update([
-            'code_verify' => $code
+            'code_verify' => $code,
         ]);
         // send code to email
         Mail::to($user->email)->send(new CodeVerification($user));
 
     }
 
-
-    public function forgetPassword(Request $request) : JsonResponse
+    public function forgetPassword(Request $request): JsonResponse
     {
         $request->validate([
             'email' => 'required|email',
@@ -121,23 +118,22 @@ class AuthController extends Controller
 
         $user = User::where('email', $request->email)->first();
 
-        if (!$user) {
+        if (! $user) {
             return response([
-                'message' => 'User not found'
+                'message' => 'User not found',
             ], 404);
         }
 
         $code = rand(1000, 9999);
 
         $user->update([
-            'code_verify' => $code
+            'code_verify' => $code,
         ]);
 
         Mail::to($user->email)->send(new CodeVerification($user));
 
         return response()->json([
-            'message' => 'Code sent to your email'
+            'message' => 'Code sent to your email',
         ]);
     }
-
 }

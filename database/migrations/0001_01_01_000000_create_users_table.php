@@ -4,7 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class() extends Migration {
+return new class() extends Migration
+{
     /**
      * Run the migrations.
      */
@@ -19,16 +20,16 @@ return new class() extends Migration {
             $table->string('phone')->nullable();
             $table->string('address')->nullable();
             $table->integer('city_id')
-            ->index()
-            ->nullable();
+                ->index()
+                ->nullable();
             $table->integer('role')
-            ->default(4)
-            ->comment('1:admin;2:seller;3:vender;4:user');
-            
+                ->default(4)
+                ->comment('1:admin;2:seller;3:vender;4:user');
+
             // profil has status
             $table->integer('status')
-            ->default(1)
-            ->comment('1:active;2:inactive;3:pending;4:deleted');
+                ->default(1)
+                ->comment('1:active;2:inactive;3:pending;4:deleted');
 
             $table->timestamp('email_verified_at')->nullable();
             $table->string('code_verify')->nullable();

@@ -11,16 +11,14 @@ class OrderController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index() : JsonResponse
+    public function index(): JsonResponse
     {
         // list order for this user
         $orders = Order::where('user_id', auth()->id())
-        ->get();
+            ->get();
 
         return response()->json($orders);
     }
-
-   
 
     /**
      * Store a newly created resource in storage.
@@ -31,21 +29,17 @@ class OrderController extends Controller
         $request->validate([
             'product_id' => 'required',
             'quantity' => 'required',
-          
+
         ]);
 
         $order = $this
-        ->auth()
-        ->user()
-        ->orders() 
-        ->create($request->validated());
+            ->auth()
+            ->user()
+            ->orders()
+            ->create($request->validated());
 
         return response()->json($order);
     }
- 
- 
-
- 
 
     /**
      * Remove the specified resource from storage.
@@ -56,7 +50,7 @@ class OrderController extends Controller
         $order->delete();
 
         return response()->json([
-            'message' => 'Order deleted successfully'
+            'message' => 'Order deleted successfully',
         ]);
     }
 }
