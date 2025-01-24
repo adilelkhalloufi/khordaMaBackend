@@ -10,7 +10,6 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
-       
         "filament/filament": "^3.2.0",
         "filament/spatie-laravel-translatable-plugin": "*",
         "laravel/framework": "^11.31",
@@ -67,6 +66,7 @@
         "test": [
             "php artisan test"
         ],
+        "pest" : "./vendor/bin/pest",
         "pint": "pint",
         "refactor": "rector",
         "php-cs-fixer": "php-cs-fixer fix",

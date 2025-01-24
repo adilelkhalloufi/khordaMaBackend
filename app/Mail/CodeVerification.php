@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
@@ -12,12 +13,13 @@ class CodeVerification extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $user; 
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct(User $user)
     {
-        //
+        $this->user = $user; // Ensure the user is assigned to the property
     }
 
     /**

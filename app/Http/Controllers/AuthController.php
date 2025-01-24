@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\User\CreateUser;
 use App\Mail\CodeVerification;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
@@ -10,10 +11,8 @@ use Illuminate\Support\Facades\Mail;
 
 class AuthController extends Controller
 {
-    // creat efor me login and register function for api with sanctom
-    // and return token for user
-    // and return user data
-    // and return error if user not found
+
+
 
     public function login(Request $request): JsonResponse
     {
@@ -38,21 +37,18 @@ class AuthController extends Controller
         ]);
     }
 
-    public function register(Request $request): JsonResponse
-    {
+    public function register(
+        Request $request,
+        CreateUser $createUser
+    ): JsonResponse {
         $request->validate([
             'name' => 'required',
             'email' => 'required|email',
             'password' => 'required|confirmed',
         ]);
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => bcrypt($request->password),
-        ]);
+        $user =  $createUser->execute($request->all());
 
-        $this->sendCodeVerification();
 
         $token = $user->createToken('token')->plainTextToken;
 
@@ -96,19 +92,7 @@ class AuthController extends Controller
         return response()->json($user);
     }
 
-    public function sendCodeVerification(): void
-    {
-        $user = $this->auth()->user();
 
-        $code = rand(1000, 9999);
-
-        $user->update([
-            'code_verify' => $code,
-        ]);
-        // send code to email
-        Mail::to($user->email)->send(new CodeVerification($user));
-
-    }
 
     public function forgetPassword(Request $request): JsonResponse
     {
