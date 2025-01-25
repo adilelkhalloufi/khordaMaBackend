@@ -1,16 +1,14 @@
 
 <?php
 
+use App\Models\Categorie;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\Profil;
 use App\Models\Specialitie;
 use App\Models\User;
 
-
-
-
-it("to array", function () {
+it('to array', function (): void {
     $user = User::factory()->create()->refresh();
     expect(array_keys($user->toArray()))->tobe([
         User::COL_ID,
@@ -30,10 +28,7 @@ it("to array", function () {
     ]);
 });
 
-
-
-it('may have products', function () {
-
+it('may have products', function (): void {
 
     $user = User::factory()->hasProducts(3)->create();
 
@@ -41,10 +36,10 @@ it('may have products', function () {
         ->each->toBeInstanceOf(Product::class);
 });
 
-it('may have favorites', function () {
+it('may have favorites', function (): void {
+
 
     $products = Product::factory()->count(5)->create();
-
     $user = User::factory()->create();
 
     $user->favoriteProducts()->attach($products->take(3)); // Attach 3 products as favorites
@@ -55,7 +50,15 @@ it('may have favorites', function () {
     expect($favoriteProductIds)->toEqual($products->take(3)->pluck('id')->toArray());
 });
 
-it('may have bids', function () {
+it('may have  interests', function (): void {
+    $user = User::factory()->create();
+    $categories = Categorie::factory()->count(3)->create();
+
+    $user->interests()->attach($categories->take(2));
+    expect($user->interests)->toHaveCount(2);
+});
+
+it('may have bids', function (): void {
     $products = Product::factory()->count(5)->create();
 
     $user = User::factory()->create();
@@ -65,14 +68,14 @@ it('may have bids', function () {
     expect($user->bidproducts)->toHaveCount(3);
 });
 
-it('may have orders', function () {
+it('may have orders', function (): void {
     $user = User::factory()->hasOrders(3)->create();
 
     expect($user->orders)->toHaveCount(3)
         ->each->toBeInstanceOf(Order::class);
 });
 
-it('may have a specialitie', function () {
+it('may have a specialitie', function (): void {
     $user = User::factory()->create();
     $specialitie = Specialitie::factory()->create();
 
@@ -82,10 +85,10 @@ it('may have a specialitie', function () {
 });
 
 
-it('may have a profil', function () {
+
+it('may have a profil', function (): void {
     // test realtion user has on profil
     $profil = Profil::factory()->create();
-
 
     expect($profil->user)->toBeInstanceOf(User::class);
 });

@@ -3,10 +3,9 @@
 namespace Database\Seeders;
 
 use App\Models\Specialitie;
-use League\Csv\Reader;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use League\Csv\Reader;
 
 class TypeSeeder extends Seeder
 {
@@ -21,7 +20,6 @@ class TypeSeeder extends Seeder
         $records = $csv->getRecords();
 
         foreach ($records as $record) {
-
 
             DB::table(Specialitie::TABLE_NAME)->insert([
                 Specialitie::COL_NAME => $record[Specialitie::COL_NAME],

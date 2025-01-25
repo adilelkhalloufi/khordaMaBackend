@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Actions\Product;
 
 use App\Models\Product;
@@ -8,7 +7,6 @@ use Illuminate\Support\Facades\DB;
 
 class CreateProduct
 {
-
     public function execute(array $input): Product
     {
         return DB::transaction(function () use ($input) {
@@ -31,10 +29,8 @@ class CreateProduct
                     Product::COL_CONDITIONS_DOCUMENT_PRICE => $input[Product::COL_CONDITIONS_DOCUMENT_PRICE],
                     Product::COL_SHOW_COMPANY => $input[Product::COL_SHOW_COMPANY],
 
-
                 ]
             );
-
 
             return $product;
         });

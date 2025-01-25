@@ -6,11 +6,6 @@ use Filament\Support\Contracts\HasLabel;
 
 enum UserRole: int implements HasLabel
 {
-    case ADMIN = 1;
-    case SELLER = 2;
-    case VENDER = 3;
-    case USER = 4;
-
     public function getLabel(): ?string
     {
         return match ($this) {
@@ -20,4 +15,8 @@ enum UserRole: int implements HasLabel
             self::USER => 'User',
         };
     }
+    case ADMIN = 1;
+    case SELLER = 2;
+    case VENDER = 3;
+    case USER = 4;
 }

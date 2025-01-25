@@ -19,7 +19,7 @@ class Favorite extends Model
     }
 
     public function favoriteProducts(): BelongsToMany
-{
-    return $this->belongsToMany(Product::class, 'favorites', 'user_id', 'product_id');
-}
+    {
+        return $this->belongsToMany(Product::class, 'favorites', 'user_id', 'product_id');
+    }
 }

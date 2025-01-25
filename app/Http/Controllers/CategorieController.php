@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\enum\CategoryTypes;
 use App\Http\Requests\GetCategorieRequest;
 use App\Http\Resources\CategoriesResource;
 use App\Models\Categorie;
@@ -16,19 +15,15 @@ class CategorieController extends Controller
      */
     public function index(GetCategorieRequest $request): JsonResponse
     {
-        $familyId = $request->input('type', CategoryTypes::Scrap);
 
         $categories = Categorie::with('sub_categories')
-            ->where(Categorie::COL_FAMILY_ID, $familyId)
+            ->when($request->type, function ($query) use ($request) {
+                return $query->where('type', $request->type);
+            })
             ->whereNull(Categorie::COL_PARENT_ID)
             ->get();
 
-        if ($categories->isEmpty()) {
-            return response()->json([], 404);
-        }
-
         return response()->json(CategoriesResource::collection($categories));
-        // return response()->json($categories);
     }
 
     /**

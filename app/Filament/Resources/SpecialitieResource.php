@@ -13,7 +13,6 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 
-
 class SpecialitieResource extends Resource
 {
     use Translatable;
@@ -21,6 +20,7 @@ class SpecialitieResource extends Resource
     protected static ?string $model = Specialitie::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+
     protected static ?string $navigationGroup = 'Settings';
 
     public static function form(Form $form): Form

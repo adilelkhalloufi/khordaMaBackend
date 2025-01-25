@@ -6,6 +6,7 @@ use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\FavarisController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SpecialitieController;
 use App\Http\Controllers\UniteController;
 use Illuminate\Support\Facades\Route;
 
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('categorie', [CategorieController::class, 'index']);
 Route::get('unites', [UniteController::class, 'index']);
 Route::get('products', [ProductController::class, 'index']);
+Route::get('specialities', [SpecialitieController::class, 'index']);
 
 Route::post('login', [AuthController::class, 'login']);
 Route::post('register', [AuthController::class, 'register']);
@@ -28,5 +30,4 @@ Route::group(['middleware' => ['auth:sanctum']], function (): void {
     Route::post('addToFavaris', FavarisController::class);
     Route::resource('order', OrderController::class);
     Route::resource('bid', BidController::class);
-
 });

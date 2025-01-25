@@ -23,8 +23,6 @@ class ProfilFactory extends Factory
             Profil::COL_COINS => $this->faker->randomNumber(2),
             Profil::COL_USER_ID => User::factory(),
 
-
-
         ];
     }
 }

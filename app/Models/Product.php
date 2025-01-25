@@ -75,7 +75,6 @@ class Product extends Model
         return $this->morphMany(Attachement::class, 'model');
     }
 
-
     public function favoritedBy(): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'favorites', 'product_id', 'user_id');

@@ -4,8 +4,7 @@
 use App\Actions\Product\CreateProduct;
 use App\Models\Product;
 
-it('creates a new product', function () {
-
+it('creates a new product', function (): void {
 
     $createProduct = new CreateProduct();
 

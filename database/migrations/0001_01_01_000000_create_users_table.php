@@ -30,7 +30,7 @@ return new class() extends Migration
             $table->integer('status')
                 ->default(1)
                 ->comment('1:active;2:inactive;3:pending;4:deleted');
-            
+
             $table->foreignId('specialitie_id')
                 ->nullable()
                 ->constrained('specialities');

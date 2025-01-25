@@ -11,9 +11,6 @@ use Illuminate\Support\Facades\Mail;
 
 class AuthController extends Controller
 {
-
-
-
     public function login(Request $request): JsonResponse
     {
         $request->validate([
@@ -47,8 +44,7 @@ class AuthController extends Controller
             'password' => 'required|confirmed',
         ]);
 
-        $user =  $createUser->execute($request->all());
-
+        $user = $createUser->execute($request->all());
 
         $token = $user->createToken('token')->plainTextToken;
 
@@ -91,8 +87,6 @@ class AuthController extends Controller
 
         return response()->json($user);
     }
-
-
 
     public function forgetPassword(Request $request): JsonResponse
     {
