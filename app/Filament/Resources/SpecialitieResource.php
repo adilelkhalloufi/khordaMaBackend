@@ -2,10 +2,9 @@
 
 namespace App\Filament\Resources;
 
+use App\enum\UserRole;
 use App\Filament\Resources\SpecialitieResource\Pages;
-use App\Filament\Resources\SpecialitieResource\RelationManagers;
 use App\Models\Specialitie;
-use Filament\Forms;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -13,8 +12,7 @@ use Filament\Resources\Concerns\Translatable;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
+
 
 class SpecialitieResource extends Resource
 {
@@ -23,6 +21,7 @@ class SpecialitieResource extends Resource
     protected static ?string $model = Specialitie::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationGroup = 'Settings';
 
     public static function form(Form $form): Form
     {
@@ -30,11 +29,9 @@ class SpecialitieResource extends Resource
             ->schema([
                 TextInput::make(Specialitie::COL_NAME),
                 Select::make(Specialitie::COL_TYPE)
-                    ->options([
-                        'Buyer' => 2,
-                        'Seller' => 3,
-
-                    ]),
+                    ->label('Role')
+                    ->options(UserRole::class)
+                    ->searchable(),
             ]);
     }
 
@@ -43,7 +40,13 @@ class SpecialitieResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make(Specialitie::COL_NAME)->searchable(),
-                Tables\Columns\TextColumn::make(Specialitie::COL_TYPE)->searchable(),
+                Tables\Columns\TextColumn::make('type')
+                    ->label('Type')
+                    ->formatStateUsing(function (int $state): string {
+                        return UserRole::from($state)->getLabel();
+                    })
+                    ->sortable()
+                    ->searchable(),
             ])
             ->filters([
                 //
@@ -54,6 +57,8 @@ class SpecialitieResource extends Resource
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
+                    Tables\Actions\LocaleSwitcher::make(),
+
                 ]),
             ]);
     }

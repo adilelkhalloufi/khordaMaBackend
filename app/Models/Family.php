@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Translatable\HasTranslations;
 
 class Family extends Model
 {
+    use HasTranslations;
+    protected $translatable = [self::COL_NAME];
     public const TABLE_NAME = 'families';
 
     public const COL_ID = 'id';
