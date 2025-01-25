@@ -42,6 +42,9 @@ class AuthController extends Controller
             'name' => 'required',
             'email' => 'required|email',
             'password' => 'required|confirmed',
+            'phone' => 'required',
+            'city_id' => 'required',
+            'address' => 'required',
         ]);
 
         $user = $createUser->execute($request->all());

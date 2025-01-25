@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\enum\ProfilStatus;
 use App\enum\UserRole;
 use App\Models\User;
+use Database\Factories\UserFactory;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -16,14 +18,16 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->create([
-            'first_name' => 'Admin Admin',
-            'last_name' => 'Admin',
-            'email' => 'admin@admin.com',
-            'role' => UserRole::ADMIN,
-            'password' => bcrypt('password'),
-        ]);
+        // User::factory()->create([
+        //     'first_name' => 'Admin Admin',
+        //     'last_name' => 'Admin',
+        //     'email' => 'admin@admin.com',
+        //     'role' => UserRole::ADMIN,
+        //     'status' => ProfilStatus::ACTIF,
+        //     'password' => bcrypt('password'),
+        // ]);
 
+        User::factory(10)->create();
         $this->call(FamilySeeder::class);
         $this->call(UniteSeeder::class);
         $this->call(CategoriesSeeder::class);
