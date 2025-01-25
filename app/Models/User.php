@@ -8,13 +8,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
-{ 
+{
 
-   public const TABLE_NAME = 'users';
+    public const TABLE_NAME = 'users';
 
     public const COL_ID = 'id';
     public const COL_FIRST_NAME = 'first_name';
@@ -36,7 +37,7 @@ class User extends Authenticatable
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
- 
+
 
     /**
      * The attributes that should be hidden for serialization.
@@ -53,16 +54,16 @@ class User extends Authenticatable
     }
     public function bidproducts(): BelongsToMany
     {
-        return $this->belongsToMany(Product::class, 'bids','user_id', 'product_id');
+        return $this->belongsToMany(Product::class, 'bids', 'user_id', 'product_id');
     }
 
-    
+
     public function specialitie(): BelongsTo
     {
         return $this->belongsTo(Specialitie::class, 'specialitie_id', 'id');
     }
- 
-    
+
+
     public function products(): HasMany
     {
         return $this->hasMany(Product::class, 'user_id', 'id');
@@ -76,9 +77,9 @@ class User extends Authenticatable
 
 
 
-    public function profil(): BelongsTo
+    public function profil(): HasOne
     {
-        return $this->BelongsTo(Profil::class, 'user_id', 'id');
+        return $this->hasOne(Profil::class, 'user_id', 'id');
     }
 
     // function to send code verfecation

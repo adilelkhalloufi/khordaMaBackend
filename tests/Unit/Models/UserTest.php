@@ -1,22 +1,18 @@
 
 <?php
 
-use App\Models\Bid;
-use App\Models\Categorie;
-use App\Models\Favorite;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\Profil;
 use App\Models\Specialitie;
-use App\Models\Unite;
 use App\Models\User;
 
 
 
 
-it("to array",function(){
+it("to array", function () {
     $user = User::factory()->create()->refresh();
-     expect(array_keys($user->toArray()))->tobe([
+    expect(array_keys($user->toArray()))->tobe([
         User::COL_ID,
         User::COL_FIRST_NAME,
         User::COL_LAST_NAME,
@@ -38,7 +34,7 @@ it("to array",function(){
 
 it('may have products', function () {
 
-     
+
     $user = User::factory()->hasProducts(3)->create();
 
     expect($user->products)->toHaveCount(3)
@@ -46,12 +42,12 @@ it('may have products', function () {
 });
 
 it('may have favorites', function () {
-    
-        $products = Product::factory()->count(5)->create();
 
-     $user = User::factory()->create();
+    $products = Product::factory()->count(5)->create();
 
-     $user->favoriteProducts()->attach($products->take(3)); // Attach 3 products as favorites
+    $user = User::factory()->create();
+
+    $user->favoriteProducts()->attach($products->take(3)); // Attach 3 products as favorites
 
     expect($user->favoriteProducts)->toHaveCount(3);
 
@@ -67,7 +63,6 @@ it('may have bids', function () {
     $user->bidproducts()->attach($products->take(3)); // Attach 3 products as bids
 
     expect($user->bidproducts)->toHaveCount(3);
-
 });
 
 it('may have orders', function () {
@@ -88,15 +83,9 @@ it('may have a specialitie', function () {
 
 
 it('may have a profil', function () {
+    // test realtion user has on profil
+    $profil = Profil::factory()->create();
 
-    $Profil = Profil::factory()->create();
 
-    expect($user->profil)->toBeInstanceOf(Profil::class);
-
- 
+    expect($profil->user)->toBeInstanceOf(User::class);
 });
-
- 
- 
-
-
