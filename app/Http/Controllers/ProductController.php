@@ -16,6 +16,7 @@ class ProductController extends Controller
     {
         $Product = Product::with(['categorie', 'unite'])
             ->where(Product::COL_AVAILABILITY_STATUS, ProductAdminStatus::Published->value)
+            ->orderby(Product::COL_STATUS)
             ->get();
 
         return response()

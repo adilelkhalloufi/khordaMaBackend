@@ -15,7 +15,7 @@ class ProductRessource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-
+        $statue = json_decode(ProductStatue::from($this->status)->getLabel(), true);
         return [
             'id' => $this->id,
             'name' => $this->name,
@@ -23,7 +23,10 @@ class ProductRessource extends JsonResource
             'price' => $this->price,
             'categorie' => CategoriesResource::make($this->categorie),
             'unite' => UniteResource::make($this->unite),
-            'status' => ProductStatue::from($this->status)->getLabel(),
+            'status' => [
+                'name' => $statue,
+                'color' => ProductStatue::from($this->status)->getColor(),
+            ],
             'image' => $this->image,
             'quantity' => $this->quantity,
             'availability_status' => $this->availability_status,

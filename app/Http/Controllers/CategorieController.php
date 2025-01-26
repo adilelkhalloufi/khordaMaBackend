@@ -18,7 +18,7 @@ class CategorieController extends Controller
 
         $categories = Categorie::with('sub_categories')
             ->when($request->type, function ($query) use ($request) {
-                return $query->where('type', $request->type);
+                return $query->where(Categorie::COL_FAMILY_ID, $request->type);
             })
             ->whereNull(Categorie::COL_PARENT_ID)
             ->get();

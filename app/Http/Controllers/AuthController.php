@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Actions\User\CreateUser;
+use App\enum\ProfilStatus;
 use App\Mail\CodeVerification;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
@@ -13,6 +14,8 @@ class AuthController extends Controller
 {
     public function login(Request $request): JsonResponse
     {
+        //login if user statue active
+
         $request->validate([
             'email' => 'required|email',
             'password' => 'required',
@@ -25,6 +28,12 @@ class AuthController extends Controller
         }
 
         $user = auth()->user();
+
+        if ($user->status != ProfilStatus::ACTIF->value) {
+            return response([
+                'message' => 'Your account is inactive',
+            ], 401);
+        }
 
         $token = $user->createToken('token')->plainTextToken;
 

@@ -18,14 +18,14 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        // User::factory()->create([
-        //     'first_name' => 'Admin Admin',
-        //     'last_name' => 'Admin',
-        //     'email' => 'admin@admin.com',
-        //     'role' => UserRole::ADMIN,
-        //     'status' => ProfilStatus::ACTIF,
-        //     'password' => bcrypt('password'),
-        // ]);
+        User::factory()->create([
+            'first_name' => 'Admin Admin',
+            'last_name' => 'Admin',
+            'email' => 'admin@admin.com',
+            'role' => UserRole::ADMIN,
+            'status' => ProfilStatus::ACTIF,
+            'password' => bcrypt('password'),
+        ]);
 
         User::factory(10)->create();
         $this->call(FamilySeeder::class);

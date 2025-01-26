@@ -14,9 +14,11 @@ class UniteResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
+        $name = json_decode($this->getRawOriginal('name'), true);
+
         return [
             'id' => $this->id,
-            'name' => $this->name,
+            'name' =>  $name,
             'created_at' => $this->created_at,
         ];
     }
