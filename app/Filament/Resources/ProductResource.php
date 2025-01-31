@@ -2,7 +2,7 @@
 
 namespace App\Filament\Resources;
 
-use App\enum\ProductStatus;
+use App\enum\ProductAdminStatus;
 use App\Filament\Resources\ProductResource\Pages;
 use App\Models\Product;
 use Filament\Forms\Components\FileUpload;
@@ -62,10 +62,10 @@ class ProductResource extends Resource
 
                         ->required()
                         ->searchable(),
-                    Select::make(Product::COL_STATUE)
-                        ->options(ProductStatus::class)
+                    Select::make(Product::COL_STATUS)
+                        ->options(ProductAdminStatus::class)
                         ->required()
-                        ->default(ProductStatus::Pending),
+                        ->default(ProductAdminStatus::Draft),
                 ]),
                 // Group::make()->schema([
                 //     FileUpload::make('attachments')
@@ -89,6 +89,7 @@ class ProductResource extends Resource
 
                 TextColumn::make(Product::COL_DESCRIPTION)
                     ->label('Description')
+                    ->limit(100)
                     ->sortable()
                     ->searchable(),
 
@@ -101,8 +102,17 @@ class ProductResource extends Resource
                     ->money('DH')
                     ->sortable(),
 
-                TextColumn::make(Product::COL_STATUE)
-                    ->label('Status')->badge(),
+                 TextColumn::make('status')
+                    ->label('Status')
+                    ->badge()
+                    ->formatStateUsing(function (int $state): string {
+                        return ProductAdminStatus::from($state)->getLabel();
+                    })
+                    ->color(function (int $state): string {
+                        return ProductAdminStatus::from($state)->getColor();
+                    })
+                    ->searchable()
+                    ->sortable(),
 
             ])
             ->filters([])
