@@ -44,7 +44,12 @@ class ProductController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $Product = Product::with(['categorie', 'unite'])
+            ->where(Product::COL_ID, $id)
+            ->first();
+
+        return response()
+            ->json(new ProductRessource($Product));
     }
 
     /**

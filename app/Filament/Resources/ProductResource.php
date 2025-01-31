@@ -89,18 +89,20 @@ class ProductResource extends Resource
 
                 TextColumn::make(Product::COL_DESCRIPTION)
                     ->label('Description')
-                    ->limit(100)
+                    ->limit(50)
                     ->sortable()
                     ->searchable(),
 
                 TextColumn::make(Product::COL_QUANTITY)
                     ->label('Quantity')
                     ->sortable(),
-
+         
+                    
                 TextColumn::make(Product::COL_PRICE)
-                    ->label('Price')
-                    ->money('DH')
-                    ->sortable(),
+                ->label('Price')
+        
+                ->sortable(),
+
 
                  TextColumn::make('status')
                     ->label('Status')

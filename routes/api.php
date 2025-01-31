@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 //  Public routes
 Route::get('categorie', [CategorieController::class, 'index']);
 Route::get('unites', [UniteController::class, 'index']);
-Route::get('products', [ProductController::class, 'index']);
+Route::resource('products', ProductController::class);
 Route::get('specialities', [SpecialitieController::class, 'index']);
 
 Route::post('login', [AuthController::class, 'login']);
