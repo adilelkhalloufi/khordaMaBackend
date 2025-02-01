@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Mail;
 
 class AuthController extends Controller
 {
+
     public function login(Request $request): JsonResponse
     {
         //login if user statue active
