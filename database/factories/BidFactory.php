@@ -19,8 +19,8 @@ class BidFactory extends Factory
     public function definition(): array
     {
         return [
-            'product_id' => Product::factory(),
-            'user_id' => User::factory(),
+            'product_id' => Product::pluck('id')->random(),
+            'user_id' => User::pluck('id')->random(),
             'price' => $this->faker->randomNumber(2),
 
         ];

@@ -49,12 +49,19 @@ class AuthController extends Controller
         CreateUser $createUser
     ): JsonResponse {
         $request->validate([
-            'name' => 'required',
+            'company_name' => 'required',
+            'role' => 'required',
+            'password' => 'required',
             'email' => 'required|email',
-            'password' => 'required|confirmed',
+            'specialitie_id' => 'required',
+            'interests' => 'required',
             'phone' => 'required',
-            'city_id' => 'required',
             'address' => 'required',
+            'city_id' => 'required',
+            'agreement' => 'required',
+            'first_name' => 'required',
+            'last_name' => 'required',
+
         ]);
 
         $user = $createUser->execute($request->all());

@@ -2,20 +2,21 @@
 
 namespace App\Actions\User;
 
-use App\Enum\EnumTypeStatue;
+use App\Actions\Profile\CreateProfile;
 use App\enum\ProfilStatus;
 use App\Mail\CodeVerification;
 use App\Models\Profil;
 use App\Models\User;
-use GuzzleHttp\Promise\Create;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
 class CreateUser
 {
-    public function execute(array $input, CreateProfile $createProfile): User
+
+
+    public function execute(array $input): User
     {
-        return DB::transaction(function () use ($input, $createProfile) {
+        return DB::transaction(function () use ($input) {
 
             $user = User::create(
                 [
@@ -29,12 +30,22 @@ class CreateUser
                     User::COL_ROLE =>  $input[User::COL_ROLE],
                     User::COL_STATUS => ProfilStatus::PENDING,
                     User::COL_SPECIALITIE_ID => $input[User::COL_SPECIALITIE_ID],
+
                 ]
             );
+
+            $user->interests()->attach($input['interests']);
+
             // test if input has company_name we gone create profil
-            if (isset($input[Profil::COL_COMPANY_NAME])) {
-                $profil = $createProfile->execute($input);
-            }
+
+            $user->profil()->create([
+                Profil::COL_COMPANY_NAME => 'Company name',
+            ]);
+
+
+            // add intersting
+
+
             Mail::to($user->email)->send(new CodeVerification($user));
 
             return $user;

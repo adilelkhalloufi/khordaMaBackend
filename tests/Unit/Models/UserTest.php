@@ -6,6 +6,7 @@ use App\Models\Order;
 use App\Models\Product;
 use App\Models\Profil;
 use App\Models\Specialitie;
+use App\Models\Unite;
 use App\Models\User;
 
 it('to array', function (): void {
@@ -29,7 +30,8 @@ it('to array', function (): void {
 });
 
 it('may have products', function (): void {
-
+    $categories = Categorie::factory()->count(10)->create();
+    $unite = Unite::factory()->count(10)->create();
     $user = User::factory()->hasProducts(3)->create();
 
     expect($user->products)->toHaveCount(3)
@@ -37,10 +39,13 @@ it('may have products', function (): void {
 });
 
 it('may have favorites', function (): void {
-
-
-    $products = Product::factory()->count(5)->create();
+    $categories = Categorie::factory()->count(10)->create();
+    $unite = Unite::factory()->count(10)->create();
+    $products = Product::factory(5)->create();
     $user = User::factory()->create();
+
+    expect($products)->toHaveCount(5);
+
 
     $user->favoriteProducts()->attach($products->take(3)); // Attach 3 products as favorites
 
@@ -59,8 +64,9 @@ it('may have  interests', function (): void {
 });
 
 it('may have bids', function (): void {
+    $categories = Categorie::factory()->count(10)->create();
+    $unite = Unite::factory()->count(10)->create();
     $products = Product::factory()->count(5)->create();
-
     $user = User::factory()->create();
 
     $user->bidproducts()->attach($products->take(3)); // Attach 3 products as bids
@@ -69,6 +75,9 @@ it('may have bids', function (): void {
 });
 
 it('may have orders', function (): void {
+    $categories = Categorie::factory()->count(10)->create();
+    $unite = Unite::factory()->count(10)->create();
+    $products = Product::factory(5)->create();
     $user = User::factory()->hasOrders(3)->create();
 
     expect($user->orders)->toHaveCount(3)
@@ -83,8 +92,6 @@ it('may have a specialitie', function (): void {
 
     expect($user->specialitie)->toBeInstanceOf(Specialitie::class);
 });
-
-
 
 it('may have a profil', function (): void {
     // test realtion user has on profil

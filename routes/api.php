@@ -17,6 +17,7 @@ Route::resource('products', ProductController::class);
 Route::get('specialities', [SpecialitieController::class, 'index']);
 
 Route::post('login', [AuthController::class, 'login']);
+
 Route::post('register', [AuthController::class, 'register']);
 Route::post('forget-password', [AuthController::class, 'forgetPassword']);
 

@@ -19,6 +19,7 @@ class CategoriesResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $name,
+            'family_id' => $this->family_id,
             'subcategories' => CategoriesResource::collection($this->sub_categories),
         ];
     }
