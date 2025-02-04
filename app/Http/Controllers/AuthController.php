@@ -13,8 +13,7 @@ class AuthController extends Controller
 {
     public function login(Request $request) 
     {
-        // login if user statue active
-
+ 
         $request->validate([
             'email' => 'required|email',
             'password' => 'required',
@@ -38,7 +37,7 @@ class AuthController extends Controller
 
         return response()->json([
             'user' => $user,
-            'favoris' => $user->favoriteProducts,
+            'favoris' => $user->favorites,
             'token' => $token,
         ]);
     }
