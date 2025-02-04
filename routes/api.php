@@ -26,6 +26,7 @@ Route::group(['middleware' => ['auth:sanctum']], function (): void {
 
     Route::post('logout', [AuthController::class, 'logout']);
     Route::post('orders', [OrderController::class, 'store']);
+    Route::post('favoris', FavarisController::class);
     // api to create products
     Route::resource('product', ProductController::class);
     Route::post('addToFavaris', FavarisController::class);

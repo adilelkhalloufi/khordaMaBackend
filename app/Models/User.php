@@ -74,7 +74,7 @@ class User extends Authenticatable implements HasName
         return "{$this->first_name} {$this->last_name}";
     }
 
-    public function favoriteProducts(): BelongsToMany
+    public function favorites(): BelongsToMany
     {
         return $this->belongsToMany(Product::class, 'favorites', 'user_id', 'product_id');
     }
