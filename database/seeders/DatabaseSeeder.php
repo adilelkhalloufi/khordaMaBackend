@@ -25,6 +25,22 @@ class DatabaseSeeder extends Seeder
             'status' => ProfilStatus::ACTIF,
             'password' => bcrypt('password'),
         ]);
+        User::factory()->create([
+            'first_name' => 'test test',
+            'last_name' => 'test',
+            'email' => 'test@test.com',
+            'role' => UserRole::VENDER,
+            'status' => ProfilStatus::ACTIF,
+            'password' => bcrypt('password'),
+        ]);
+        User::factory()->create([
+            'first_name' => 'test2 test2',
+            'last_name' => 'test2',
+            'email' => 'test2@test2.com',
+            'role' => UserRole::SELLER,
+            'status' => ProfilStatus::ACTIF,
+            'password' => bcrypt('password'),
+        ]);
 
         // User::factory(10)->create();
         $this->call(FamilySeeder::class);

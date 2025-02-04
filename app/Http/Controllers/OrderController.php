@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -30,16 +31,20 @@ class OrderController extends Controller
         $request->validate([
             'products' => 'required|array',
             'products.*.id' => 'required|exists:products,id',
+            'note' => 'nullable|string',
+            'payment' => 'required|in:1,2,3,4',
         ]);
         // boucle this product to create order for each product
         foreach ($request->products as $product) {
-            $order = $this
-                ->auth()
-                ->user()
+            $order = 
+             Auth::user()
                 ->orders()
                 ->create([
                     'product_id' => $product['id'],
                     'quantity' => $product['quantity'] ?? 1,
+                     'note' => $request->note,
+                    'payment' => $request->payment,
+
                 ]);
         }
 

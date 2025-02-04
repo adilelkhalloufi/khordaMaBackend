@@ -6,13 +6,12 @@ use App\Actions\User\CreateUser;
 use App\enum\ProfilStatus;
 use App\Mail\CodeVerification;
 use App\Models\User;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
+ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
 class AuthController extends Controller
 {
-    public function login(Request $request): JsonResponse
+    public function login(Request $request) 
     {
         // login if user statue active
 
@@ -46,7 +45,7 @@ class AuthController extends Controller
     public function register(
         Request $request,
         CreateUser $createUser
-    ): JsonResponse {
+    ) {
         $request->validate([
             'company_name' => 'required',
             'role' => 'required',
@@ -73,7 +72,7 @@ class AuthController extends Controller
         ]);
     }
 
-    public function logout(Request $request): JsonResponse
+    public function logout(Request $request)
     {
         auth()->user()->tokens()->delete();
 
@@ -82,12 +81,12 @@ class AuthController extends Controller
         ]);
     }
 
-    public function me(Request $request): JsonResponse
+    public function me(Request $request)
     {
         return response()->json(auth()->user());
     }
 
-    public function updateProfile(Request $request): JsonResponse
+    public function updateProfile(Request $request)
     {
         $user = auth()->user();
 
@@ -96,7 +95,7 @@ class AuthController extends Controller
         return response()->json($user);
     }
 
-    public function updatePassword(Request $request): JsonResponse
+    public function updatePassword(Request $request)
     {
         $user = auth()->user();
 
@@ -107,7 +106,7 @@ class AuthController extends Controller
         return response()->json($user);
     }
 
-    public function forgetPassword(Request $request): JsonResponse
+    public function forgetPassword(Request $request)
     {
         $request->validate([
             'email' => 'required|email',
