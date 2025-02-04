@@ -96,25 +96,22 @@ class ProductResource extends Resource
                 TextColumn::make(Product::COL_QUANTITY)
                     ->label('Quantity')
                     ->sortable(),
-         
-                    
-                TextColumn::make(Product::COL_PRICE)
-                ->label('Price')
-        
-                ->sortable(),
 
+                TextColumn::make(Product::COL_PRICE)
+                    ->label('Price')
+                    ->sortable(),
 
                  TextColumn::make('status')
-                    ->label('Status')
-                    ->badge()
-                    ->formatStateUsing(function (int $state): string {
-                        return ProductAdminStatus::from($state)->getLabel();
-                    })
-                    ->color(function (int $state): string {
-                        return ProductAdminStatus::from($state)->getColor();
-                    })
-                    ->searchable()
-                    ->sortable(),
+                     ->label('Status')
+                     ->badge()
+                     ->formatStateUsing(function (int $state): string {
+                         return ProductAdminStatus::from($state)->getLabel();
+                     })
+                     ->color(function (int $state): string {
+                         return ProductAdminStatus::from($state)->getColor();
+                     })
+                     ->searchable()
+                     ->sortable(),
 
             ])
             ->filters([])

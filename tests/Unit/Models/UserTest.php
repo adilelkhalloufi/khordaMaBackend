@@ -46,7 +46,6 @@ it('may have favorites', function (): void {
 
     expect($products)->toHaveCount(5);
 
-
     $user->favoriteProducts()->attach($products->take(3)); // Attach 3 products as favorites
 
     expect($user->favoriteProducts)->toHaveCount(3);

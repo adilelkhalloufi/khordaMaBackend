@@ -5,7 +5,6 @@ namespace Database\Seeders;
 use App\enum\ProfilStatus;
 use App\enum\UserRole;
 use App\Models\User;
-use Database\Factories\UserFactory;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 

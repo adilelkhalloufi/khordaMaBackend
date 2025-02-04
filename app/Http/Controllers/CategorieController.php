@@ -21,6 +21,7 @@ class CategorieController extends Controller
                 return $query->where(Categorie::COL_FAMILY_ID, $request->type);
             })
             ->whereNull(Categorie::COL_PARENT_ID)
+            ->orderby('id', 'desc')
             ->get();
 
         return response()->json(CategoriesResource::collection($categories));

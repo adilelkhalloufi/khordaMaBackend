@@ -27,10 +27,7 @@ it('creates a new user with role and intrests', function (): void {
         'interests' => $categories->pluck('id')->toArray(),
         Profil::COL_COMPANY_NAME => 'Company name',
 
-
     ]);
-
-
 
     $this->assertInstanceOf(User::class, $user);
 

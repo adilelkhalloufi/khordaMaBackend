@@ -11,7 +11,6 @@ it('creates a new interset', function (): void {
     $user = User::factory()->create();
     $category = Categorie::factory()->create();
 
-
     $createInterest = new CreateInterest();
 
     $interest = $createInterest->execute([

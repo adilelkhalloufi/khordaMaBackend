@@ -16,6 +16,7 @@ class ProductRessource extends JsonResource
     public function toArray(Request $request): array
     {
         $statue = json_decode(ProductStatue::from($this->status)->getLabel(), true);
+
         return [
             'id' => $this->id,
             'name' => $this->name,

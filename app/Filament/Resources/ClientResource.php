@@ -4,16 +4,13 @@ namespace App\Filament\Resources;
 
 use App\enum\ProfilStatus;
 use App\Filament\Resources\ClientResource\Pages;
-
 use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
-use Filament\Tables\Columns\BadgeColumn;
 use Filament\Tables\Table;
-
 
 class ClientResource extends Resource
 {
@@ -45,10 +42,6 @@ class ClientResource extends Resource
 
                     ->options(ProfilStatus::class)
                     ->required(),
-
-
-
-
 
             ]);
     }

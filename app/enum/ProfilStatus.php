@@ -5,7 +5,7 @@ namespace App\enum;
 use Filament\Support\Contracts\HasColor;
 use Filament\Support\Contracts\HasLabel;
 
-enum ProfilStatus: int implements HasLabel, HasColor
+enum ProfilStatus: int implements HasColor, HasLabel
 {
     case ACTIF = 1;
     case INACTIF = 2;

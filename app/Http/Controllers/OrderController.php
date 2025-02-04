@@ -26,17 +26,22 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         // create new order
+        // test validate should have params call products and it array and product should have id
         $request->validate([
-            'product_id' => 'required',
-            'quantity' => 'required',
-
+            'products' => 'required|array',
+            'products.*.id' => 'required|exists:products,id',
         ]);
-
-        $order = $this
-            ->auth()
-            ->user()
-            ->orders()
-            ->create($request->validated());
+        // boucle this product to create order for each product
+        foreach ($request->products as $product) {
+            $order = $this
+                ->auth()
+                ->user()
+                ->orders()
+                ->create([
+                    'product_id' => $product['id'],
+                    'quantity' => $product['quantity'] ?? 1,
+                ]);
+        }
 
         return response()->json($order);
     }

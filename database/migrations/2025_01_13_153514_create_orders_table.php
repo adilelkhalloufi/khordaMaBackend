@@ -22,6 +22,11 @@ return new class() extends Migration
                 ->constrained('products');
             $table->integer('quantity')->default(0);
             $table->decimal('price')->default(0);
+            $table->text('note')->nullable();
+            $table->string('address')->nullable();
+            $table->integer('payment')
+                ->nullable()
+                ->comment('1:cash;2:credit card;3:paypal;4:other');
             $table->integer('status')
                 ->default(1)
                 ->comment('1:active;2:inactive;3:pending;4:deleted');

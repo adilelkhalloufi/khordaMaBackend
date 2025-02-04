@@ -2,7 +2,6 @@
 
 namespace App\Actions\User;
 
-use App\Actions\Profile\CreateProfile;
 use App\enum\ProfilStatus;
 use App\Mail\CodeVerification;
 use App\Models\Profil;
@@ -12,8 +11,6 @@ use Illuminate\Support\Facades\Mail;
 
 class CreateUser
 {
-
-
     public function execute(array $input): User
     {
         return DB::transaction(function () use ($input) {
@@ -27,7 +24,7 @@ class CreateUser
                     User::COL_CITY_ID => $input[User::COL_CITY_ID],
                     User::COL_ADDRESS => $input[User::COL_ADDRESS],
                     User::COL_PASSWORD => bcrypt($input[User::COL_PASSWORD]),
-                    User::COL_ROLE =>  $input[User::COL_ROLE],
+                    User::COL_ROLE => $input[User::COL_ROLE],
                     User::COL_STATUS => ProfilStatus::PENDING,
                     User::COL_SPECIALITIE_ID => $input[User::COL_SPECIALITIE_ID],
 
@@ -42,9 +39,7 @@ class CreateUser
                 Profil::COL_COMPANY_NAME => 'Company name',
             ]);
 
-
             // add intersting
-
 
             Mail::to($user->email)->send(new CodeVerification($user));
 

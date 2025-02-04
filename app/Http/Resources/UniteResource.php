@@ -18,7 +18,7 @@ class UniteResource extends JsonResource
 
         return [
             'id' => $this->id,
-            'name' =>  $name,
+            'name' => $name,
             'created_at' => $this->created_at,
         ];
     }
