@@ -6,6 +6,7 @@ use App\enum\ProductAdminStatus;
 use App\Http\Resources\ProductRessource;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -14,13 +15,16 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $Product = Product::with(['categorie', 'unite'])
-            ->where(Product::COL_AVAILABILITY_STATUS, ProductAdminStatus::Published->value)
-            ->orderby(Product::COL_STATUS)
-            ->get();
 
-        return response()
-            ->json(ProductRessource::collection($Product));
+     
+        $Product = Product::with(['categorie', 'unite'])
+        ->where(Product::COL_USER_ID, Auth::id())
+        ->orderby(Product::COL_STATUS)
+        ->get();
+
+    return response()
+        ->json(ProductRessource::collection($Product));
+
     }
 
     /**
@@ -74,5 +78,19 @@ class ProductController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+
+    public function GetProduct(Request $request)
+    {
+
+
+            $Product = Product::with(['categorie', 'unite'])
+            ->where(Product::COL_AVAILABILITY_STATUS, ProductAdminStatus::Published->value)
+            ->orderby(Product::COL_STATUS)
+            ->get();
+
+        return response()
+            ->json(ProductRessource::collection($Product));
     }
 }

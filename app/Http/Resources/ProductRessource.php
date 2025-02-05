@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\enum\ProductAdminStatus;
 use App\enum\ProductStatue;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -30,7 +31,7 @@ class ProductRessource extends JsonResource
             ],
             'image' => $this->image,
             'quantity' => $this->quantity,
-            'availability_status' => $this->availability_status,
+            'availability_status' => ProductAdminStatus::from($this->availability_status)->getLabel(),
             'auction' => $this->auction == 1 ? true : false,
             'date_end_auction' => $this->date_end_auction,
             'conditions_document' => $this->conditions_document,
