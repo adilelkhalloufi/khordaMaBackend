@@ -20,6 +20,7 @@ class ProductController extends Controller
         $Product = Product::with(['categorie', 'unite'])
         ->where(Product::COL_USER_ID, Auth::id())
         ->orderby(Product::COL_STATUS)
+        ->orderby(Product::COL_ID,"desc")
         ->get();
 
     return response()
@@ -40,7 +41,19 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $validated = $request->validate([
+            Product::COL_NAME => 'required',
+            Product::COL_DESCRIPTION => 'required',
+            Product::COL_PRICE => 'required',
+            Product::COL_QUANTITY => 'required',
+            Product::COL_CATEGORIE_ID => 'required',
+            Product::COL_UNITE_ID => 'required',
+         ]);
+
+         Auth::user()->products()->create($validated);
+
+         return response()
+            ->json(['message' => 'Product created successfully'], 201);
     }
 
     /**
