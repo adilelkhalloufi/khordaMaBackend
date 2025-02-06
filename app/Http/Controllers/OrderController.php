@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\OrderResource;
 use App\Models\Order;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -15,9 +16,9 @@ class OrderController extends Controller
     public function index(): JsonResponse
     {
         // list order for this user
-        $orders = Auth::user()->orders()->get();
+        $orders = Auth::user()->orders()->with('products')->get();
 
-        return response()->json($orders);
+        return response()->json(OrderResource::collection($orders));
     }
 
     /**
@@ -61,5 +62,18 @@ class OrderController extends Controller
         return response()->json([
             'message' => 'Order deleted successfully',
         ]);
+    }
+
+
+    public function GetOrderForSeller(): JsonResponse
+    {
+        // list order for this user
+        $orders = Auth::user()->orders()
+        ->with(['products' => function ($query) {
+            $query->where('user_id', Auth::id()); 
+        }])
+        ->get();
+
+        return response()->json(OrderResource::collection($orders));
     }
 }
