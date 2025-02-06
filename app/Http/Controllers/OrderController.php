@@ -69,10 +69,11 @@ class OrderController extends Controller
 
     public function GetOrderForSeller(): JsonResponse
     {
-        // list order for this user
-        $orders = Auth::user()->orders()
-        ->with(['products' => function ($query) {
-            $query->where('user_id', Auth::id()); 
+        $orders = Order::whereHas('product', function ($query) {
+            $query->where('user_id', Auth::id());
+        })
+        ->with(['product' => function ($query) {
+            $query->where('user_id', Auth::id());
         }])
         ->get();
 
