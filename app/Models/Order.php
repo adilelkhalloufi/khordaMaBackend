@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Order extends Model
 { 
@@ -21,12 +22,8 @@ class Order extends Model
     public const COL_CREATED_AT = 'created_at';
     public const COL_UPDATED_AT = 'updated_at';
 
-  
-
-    //
-
-    public function products()
+    public function product() :BelongsTo
     {
-        return $this->belongsToMany(Product::class, 'order_product', 'order_id', 'product_id');
+        return $this->belongsTo(Product::class, 'product_id', 'id');
     }
 }

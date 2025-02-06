@@ -25,11 +25,10 @@ Route::post('forget-password', [AuthController::class, 'forgetPassword']);
 Route::group(['middleware' => ['auth:sanctum']], function (): void {
 
     Route::post('logout', [AuthController::class, 'logout']);
-    Route::post('orders', [OrderController::class, 'store']);
-   
+    
     Route::get('GetOrderForSeller', [OrderController::class, 'GetOrderForSeller']);
     Route::resource('product', ProductController::class);
     Route::resource('favoris', FavarisController::class);
-    Route::resource('order', OrderController::class);
+    Route::resource('orders', OrderController::class);
     Route::resource('bid', BidController::class);
 });

@@ -22,14 +22,8 @@ class OrderResource extends JsonResource
             'quantity' => $this->quantity,
             'note' => $this->note,
             'product' => ProductRessource::make($this->product),
-            'payment' =>[
-                'name' => $this->payment,
-                'color' => EnumPayement::from($this->payment)->getLabel(),
-            ],
-            'status' => [
-                'name' => $this->status,
-                'color' => EnumOrderStatue::from($this->status)->getLabel(),
-            ],
+            'payment' => EnumPayement::from($this->payment)->getLabel(),
+            'status' => EnumOrderStatue::from($this->status)->getLabel(),
     
         ];
     }

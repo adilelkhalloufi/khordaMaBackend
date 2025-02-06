@@ -16,7 +16,9 @@ class OrderController extends Controller
     public function index(): JsonResponse
     {
         // list order for this user
-        $orders = Auth::user()->orders()->with('products')->get();
+        $orders = Auth::user()->orders(
+            )->with('product')
+            ->get();
 
         return response()->json(OrderResource::collection($orders));
     }
