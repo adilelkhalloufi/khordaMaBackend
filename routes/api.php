@@ -8,6 +8,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SpecialitieController;
 use App\Http\Controllers\UniteController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 //  Public routes
@@ -31,4 +32,21 @@ Route::group(['middleware' => ['auth:sanctum']], function (): void {
     Route::resource('favoris', FavarisController::class);
     Route::resource('orders', OrderController::class);
     Route::resource('bid', BidController::class);
+});
+
+
+
+// i want to create api config but this api work when app in mode debug
+
+Route::get('config', function () {
+    // test if app in debug mode
+
+    if(env('APP_DEBUG') == true){
+
+        Artisan::call('migrate');
+        Artisan::call('db:seed');
+
+    }
+       
+
 });
