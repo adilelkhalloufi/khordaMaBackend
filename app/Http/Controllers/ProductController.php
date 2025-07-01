@@ -65,6 +65,26 @@ class ProductController extends Controller
             ->where(Product::COL_ID, $id)
             ->first();
 
+        // Get 4 related products from the same category
+        $relatedProducts = Product::where(Product::COL_CATEGORIE_ID, $Product->categorie_id)
+            ->where(Product::COL_ID, '!=', $id) // Exclude current product
+            ->where(Product::COL_AVAILABILITY_STATUS, ProductAdminStatus::Published->value)
+            ->inRandomOrder()
+            ->limit(3)
+            ->get();
+
+        // If no related products found, get 4 random products
+        if ($relatedProducts->count() < 4) {
+            $relatedProducts = Product::where(Product::COL_ID, '!=', $id) // Exclude current product
+                ->where(Product::COL_AVAILABILITY_STATUS, ProductAdminStatus::Published->value)
+                ->inRandomOrder()
+                ->limit(3)
+                ->get();
+        }
+
+        // Add related products as an attribute to the main product
+        $Product->relatedProducts = $relatedProducts;
+
         return response()
             ->json(new ProductRessource($Product));
     }

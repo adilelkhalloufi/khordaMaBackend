@@ -43,7 +43,7 @@ Route::get('config', function () {
 
     if(env('APP_DEBUG') == true){
 
-        Artisan::call('migrate');
+        Artisan::call('migrate:refresh');
         Artisan::call('db:seed');
 
     }

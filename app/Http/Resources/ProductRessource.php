@@ -30,6 +30,7 @@ class ProductRessource extends JsonResource
                 'name' => $statue,
                 'color' => ProductStatue::from($this->status)->getColor(),
             ],
+            'status_id' => $this->status,
             'image' => $this->image,
             'quantity' => $this->quantity,
             'availability_status' => ProductAdminStatus::from($this->availability_status)->getLabel(),
@@ -40,6 +41,7 @@ class ProductRessource extends JsonResource
             'show_company' => $this->show_company == 1 ? true : false,
             'favaris' => $this->favaris == 1 ? true : false,
             'created_at' => $this->created_at,
+            'relatedProducts' => $this->relatedProducts ? ProductRessource::collection($this->relatedProducts) : [],
         ];
     }
 }

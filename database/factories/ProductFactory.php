@@ -4,8 +4,10 @@ namespace Database\Factories;
 
 use App\enum\ProductAdminStatus;
 use App\enum\ProductStatue;
+use App\enum\UserRole;
 use App\Models\Categorie;
 use App\Models\Unite;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -26,7 +28,7 @@ class ProductFactory extends Factory
             'price' => $this->faker->randomNumber(2),
             'quantity' => $this->faker->randomNumber(2),
             'categorie_id' => Categorie::pluck('id')->random(),
-
+            'user_id' => User::where('role',UserRole::SELLER)->pluck('id')->random(),
             'unite_id' => Unite::pluck('id')->random(),
             'availability_status' => $this->faker->randomElement([ProductAdminStatus::Published, ProductAdminStatus::Draft]),
             'image' => $this->faker->imageUrl(),

@@ -14,6 +14,6 @@ class ProductSeeder extends Seeder
     {
         Product::query()->delete();
 
-        Product::factory(10)->create();
+        Product::factory(50)->create();
     }
 }

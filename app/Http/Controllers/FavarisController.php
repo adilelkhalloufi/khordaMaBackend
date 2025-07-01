@@ -25,9 +25,12 @@ class FavarisController extends Controller
         $user->favorites()->toggle($request->product_id);
 
        
-        
+        // if the product was added to favorites said "Product added to favorites"
+        // if the product was removed from favorites said "Product removed from favorites"
         return response()->json([
-            'message' => 'Product removed from favorites',
+            'message' => $user->favorites()->where('product_id', $request->product_id)->exists()
+                ? 'Product added to favorites'
+                : 'Product removed from favorites'
         ]);
     }
 
