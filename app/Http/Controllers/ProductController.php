@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\enum\ProductAdminStatus;
 use App\Http\Resources\ProductRessource;
 use App\Models\Product;
+use App\Services\CoinService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -50,10 +51,36 @@ class ProductController extends Controller
             Product::COL_UNITE_ID => 'required',
          ]);
 
-         Auth::user()->products()->create($validated);
+         $coinService = new CoinService();
+         $user = Auth::user();
 
-         return response()
-            ->json(['message' => 'Product created successfully'], 201);
+         // Check if user has enough coins
+         if (!$coinService->hasEnoughCoins($user, $coinService->getProductCreationCost())) {
+             return response()->json([
+                 'message' => 'Insufficient coins. You need ' . $coinService->getProductCreationCost() . ' coin(s) to create a product.',
+                 'required_coins' => $coinService->getProductCreationCost(),
+                 'current_coins' => $user->coins
+             ], 402); // 402 Payment Required
+         }
+
+         try {
+             // Deduct coins first
+             $coinService->chargeForProductCreation($user);
+             
+             // Create the product
+             $user->products()->create($validated);
+
+             return response()->json([
+                 'message' => 'Product created successfully',
+                 'coins_deducted' => $coinService->getProductCreationCost(),
+                 'remaining_coins' => $coinService->getBalance($user)
+             ], 201);
+
+         } catch (\Exception $e) {
+             return response()->json([
+                 'message' => 'Failed to create product: ' . $e->getMessage()
+             ], 500);
+         }
     }
 
     /**
@@ -125,5 +152,20 @@ class ProductController extends Controller
 
         return response()
             ->json(ProductRessource::collection($Product));
+    }
+
+
+    /**
+     * Get user's coin balance
+     */
+    public function getCoinBalance()
+    {
+        $coinService = new CoinService();
+        $user = Auth::user();
+
+        return response()->json([
+            'coins' => $coinService->getBalance($user),
+            'product_creation_cost' => $coinService->getProductCreationCost()
+        ]);
     }
 }

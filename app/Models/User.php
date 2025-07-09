@@ -23,6 +23,7 @@ class User extends Authenticatable implements HasName
         'last_name',
         'email',
         'password',
+        'coins',
     ];
 
     /**
@@ -64,6 +65,8 @@ class User extends Authenticatable implements HasName
     public const COL_PASSWORD = 'password';
 
     public const COL_REMEMBER_TOKEN = 'remember_token';
+
+    public const COL_COINS = 'coins';
 
     public const COL_CREATED_AT = 'created_at';
 
