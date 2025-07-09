@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('categorie', [CategorieController::class, 'index']);
 Route::get('unites', [UniteController::class, 'index']);
 Route::get('products', [ProductController::class, 'GetProduct']);
+Route::get('product', [ProductController::class, 'index']);
+Route::get('product/{product}', [ProductController::class, 'show']);
 Route::get('specialities', [SpecialitieController::class, 'index']);
 
 Route::post('login', [AuthController::class, 'login']);
@@ -28,7 +30,7 @@ Route::group(['middleware' => ['auth:sanctum']], function (): void {
     Route::post('logout', [AuthController::class, 'logout']);
     
     Route::get('GetOrderForSeller', [OrderController::class, 'GetOrderForSeller']);
-    Route::resource('product', ProductController::class);
+    Route::resource('product', ProductController::class, ['except' => ['index', 'show']]);   
     Route::resource('favoris', FavarisController::class);
     Route::resource('orders', OrderController::class);
     Route::resource('bid', BidController::class);
