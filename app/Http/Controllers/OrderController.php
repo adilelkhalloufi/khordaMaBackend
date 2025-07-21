@@ -35,7 +35,16 @@ class OrderController extends Controller
             'products.*.id' => 'required|exists:products,id',
             'note' => 'nullable|string',
             'payment' => 'required|in:1,2,3,4',
+            "coins" => "nullable|numeric|min:0",
         ]);
+
+           // change coins for this user
+
+        if ($request->coins) {
+            $user = Auth::user();
+            $user->coins -= $request->coins;
+            $user->save();
+        }
         // boucle this product to create order for each product
         foreach ($request->products as $product) {
             $order = 
@@ -49,6 +58,8 @@ class OrderController extends Controller
 
                 ]);
         }
+     
+        
 
         return response()->json($order);
     }

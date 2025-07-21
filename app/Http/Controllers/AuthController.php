@@ -11,6 +11,20 @@ use Illuminate\Support\Facades\Mail;
 
 class AuthController extends Controller
 {
+
+    public function GetCoins(Request $request)
+    {
+        $user = auth()->user();
+
+        if (!$user) {
+            return response()->json(['message' => 'User not authenticated'], 401);
+        }
+
+        return response()->json([
+            'coins' => $user->coins,
+        ]);
+    }
+    
     public function login(Request $request) 
     {
  

@@ -19,6 +19,7 @@ Route::get('product', [ProductController::class, 'index']);
 Route::get('product/{product}', [ProductController::class, 'show']);
 Route::get('specialities', [SpecialitieController::class, 'index']);
 
+
 Route::post('login', [AuthController::class, 'login']);
 
 Route::post('register', [AuthController::class, 'register']);
@@ -30,10 +31,12 @@ Route::group(['middleware' => ['auth:sanctum']], function (): void {
     Route::post('logout', [AuthController::class, 'logout']);
     
     Route::get('GetOrderForSeller', [OrderController::class, 'GetOrderForSeller']);
+    Route::get('GetCoins', [AuthController::class, 'GetCoins']);
     Route::resource('product', ProductController::class, ['except' => ['index', 'show']]);   
     Route::resource('favoris', FavarisController::class);
     Route::resource('orders', OrderController::class);
     Route::resource('bid', BidController::class);
+
 });
 
 
