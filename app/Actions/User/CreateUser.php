@@ -27,6 +27,7 @@ class CreateUser
                     User::COL_ROLE => $input[User::COL_ROLE],
                     User::COL_STATUS => ProfilStatus::PENDING,
                     User::COL_SPECIALITIE_ID => $input[User::COL_SPECIALITIE_ID],
+                    User::COL_COINS => 100, // Set initial coins to 100
 
                 ]
             );
