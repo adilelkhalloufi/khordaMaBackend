@@ -29,7 +29,7 @@ Route::post('forget-password', [AuthController::class, 'forgetPassword']);
 Route::group(['middleware' => ['auth:sanctum']], function (): void {
 
     Route::post('logout', [AuthController::class, 'logout']);
-    
+    Route::post('spend-coins', [AuthController::class, 'spendCoins']);
     Route::get('GetOrderForSeller', [OrderController::class, 'GetOrderForSeller']);
     Route::get('GetCoins', [AuthController::class, 'GetCoins']);
     Route::resource('product', ProductController::class, ['except' => ['index', 'show']]);   

@@ -147,4 +147,36 @@ class AuthController extends Controller
             'message' => 'Code sent to your email',
         ]);
     }
+
+    public function  spendCoins(Request $request)
+    {
+        $user = auth()->user();
+ 
+        if (!$user) {
+            return response()->json(['message' => 'User not authenticated'], 401);
+        }
+
+        $request->validate([
+            'amount' => 'required|integer|min:1',
+            'reason' => 'required|string',
+            'product_id' => 'required|integer|exists:products,id',
+        ]);
+
+        if ($user->coins < $request->amount) {
+            return response()->json(['message' => 'Insufficient coins'], 400);
+        }
+        // create command for that
+       $user->orders()
+                ->create([
+                    'product_id' => $request->product_id,
+                    'quantity' => 1,
+                    'note' => $request->reason
+                ]);
+
+
+        $user->coins -= $request->amount;
+        $user->save();
+
+        return response()->json(['message' => 'Coins spent successfully']);
+    }
 }
